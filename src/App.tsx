@@ -15,11 +15,12 @@ import { YouTubeModal } from './components/YouTubeModal';
 import { BookReaderModal } from './components/BookReaderModal';
 import { Footer } from './components/Footer';
 import { Product, Order } from './types';
+import { DEFAULT_PRODUCTS } from './data/defaultProducts';
 import { Sparkles, ArrowRight, BookOpen, Layers, CheckCircle2 } from 'lucide-react';
 
 export default function App() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState<Product[]>(DEFAULT_PRODUCTS);
+  const [loading, setLoading] = useState(false);
   const [currentView, setCurrentView] = useState<'home' | 'shop' | 'product' | 'order-success' | 'admin' | 'flutterwave-return'>('home');
   const [activeSlug, setActiveSlug] = useState<string>('complete-egg-health-guide');
   const [activeOrder, setActiveOrder] = useState<Order | null>(null);
@@ -38,12 +39,15 @@ export default function App() {
   const fetchProducts = async () => {
     try {
       const res = await fetch('/api/products');
-      const data = await res.json();
-      if (data.products) {
-        setProducts(data.products);
+      if (res.ok) {
+        const data = await res.json();
+        if (data && Array.isArray(data.products) && data.products.length > 0) {
+          setProducts(data.products);
+        }
       }
     } catch (err) {
-      console.error('Failed to fetch products:', err);
+      // On static platforms like Vercel without serverless functions, fallback smoothly to DEFAULT_PRODUCTS
+      console.warn('API endpoint unreachable, using bundled book catalog:', err);
     } finally {
       setLoading(false);
     }
