@@ -871,9 +871,43 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                       </div>
 
                       {errorMsg && (
-                        <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 flex items-start gap-2.5 text-xs text-rose-800 animate-fade-in">
-                          <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
-                          <span>{errorMsg}</span>
+                        <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 space-y-2.5 text-xs text-rose-900 animate-fade-in">
+                          <div className="flex items-start gap-2.5">
+                            <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+                            <div className="space-y-1">
+                              <p className="font-semibold">{errorMsg}</p>
+                              <p className="text-[11px] text-rose-700">
+                                You can also switch to direct Nigerian Naira bank transfer or PayPal to complete your order immediately.
+                              </p>
+                            </div>
+                          </div>
+                          <div className="flex flex-wrap gap-2 pt-1 border-t border-rose-200/60">
+                            {nairaConfig.enabled && (
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setSelectedMethod('naira');
+                                  setErrorMsg(null);
+                                }}
+                                className="px-3 py-1.5 rounded-lg bg-stone-900 text-white font-semibold text-xs hover:bg-stone-800 transition-all cursor-pointer flex items-center gap-1.5"
+                              >
+                                <span>🇳🇬 Pay via Bank Transfer (GTBank)</span>
+                                <span>→</span>
+                              </button>
+                            )}
+                            {paypalConfig.enabled && (
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setSelectedMethod('paypal');
+                                  setErrorMsg(null);
+                                }}
+                                className="px-3 py-1.5 rounded-lg bg-white border border-stone-300 text-stone-800 font-semibold text-xs hover:bg-stone-100 transition-all cursor-pointer"
+                              >
+                                Pay with PayPal →
+                              </button>
+                            )}
+                          </div>
                         </div>
                       )}
 

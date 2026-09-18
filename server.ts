@@ -1194,6 +1194,11 @@ app.use('/api', (err: any, req: express.Request, res: express.Response, next: ex
 // ==========================================
 
 async function startServer() {
+  // In Vercel serverless environment, the app is invoked per-request by api/index.ts
+  if (process.env.VERCEL) {
+    return;
+  }
+
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({
       server: { middlewareMode: true },
@@ -1214,3 +1219,6 @@ async function startServer() {
 }
 
 startServer();
+
+export { app };
+export default app;

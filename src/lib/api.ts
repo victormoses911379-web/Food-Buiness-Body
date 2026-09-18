@@ -54,8 +54,10 @@ export async function safeFetchJson<T = any>(
     const rawText = await res.text();
     console.warn(`[safeFetchJson] Expected JSON, received ${contentType || 'text/html'} (Status ${res.status}):`, rawText.slice(0, 300));
 
-    let userFriendlyMessage = 'An unexpected server error occurred. Please try again.';
-    if (res.status === 404) {
+    let userFriendlyMessage = 'The server returned an unexpected response format. Please try again.';
+    if (contentType.includes('text/html') || rawText.includes('<!DOCTYPE') || rawText.includes('<!doctype')) {
+      userFriendlyMessage = 'Backend API is currently unreachable or not answering on this host. If you are using Vercel, please check that your Vercel Environment Variables (such as FLW_SECRET_KEY) and API functions are deployed.';
+    } else if (res.status === 404) {
       userFriendlyMessage = 'Requested service endpoint was not found on the server.';
     } else if (res.status === 413) {
       userFriendlyMessage = 'The uploaded file or receipt is too large. Please upload an image under 5MB.';

@@ -10,8 +10,10 @@ import {
   isFirestoreActive
 } from './firebase';
 
-const DATA_DIR = path.join(process.cwd(), 'data');
+const IS_VERCEL = Boolean(process.env.VERCEL);
+const DATA_DIR = IS_VERCEL ? '/tmp/data' : path.join(process.cwd(), 'data');
 const DB_FILE = path.join(DATA_DIR, 'db.json');
+const BUNDLED_DB_FILE = path.join(process.cwd(), 'data', 'db.json');
 
 export const DEFAULT_PAYMENT_SETTINGS: PaymentSettings = {
   naira: {
@@ -281,8 +283,19 @@ class Database {
         fs.mkdirSync(DATA_DIR, { recursive: true });
       }
 
-      if (fs.existsSync(DB_FILE)) {
-        const fileContent = fs.readFileSync(DB_FILE, 'utf-8');
+      // If in Vercel and DB_FILE not yet copied to /tmp, seed from bundled file
+      if (!fs.existsSync(DB_FILE) && fs.existsSync(BUNDLED_DB_FILE)) {
+        try {
+          fs.copyFileSync(BUNDLED_DB_FILE, DB_FILE);
+        } catch {
+          // Ignore copy failure, will read directly or fallback
+        }
+      }
+
+      const activeFile = fs.existsSync(DB_FILE) ? DB_FILE : (fs.existsSync(BUNDLED_DB_FILE) ? BUNDLED_DB_FILE : null);
+
+      if (activeFile) {
+        const fileContent = fs.readFileSync(activeFile, 'utf-8');
         const parsed = JSON.parse(fileContent);
         // Ensure all products exist
         if (!parsed.products || parsed.products.length === 0) {
