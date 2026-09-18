@@ -9,6 +9,7 @@ import { CheckoutModal } from './components/CheckoutModal';
 import { OrderSuccessView } from './components/OrderSuccessView';
 import { OrderLookupModal } from './components/OrderLookupModal';
 import { AdminDashboard } from './components/AdminDashboard';
+import { FlutterwavePaymentReturn } from './components/FlutterwavePaymentReturn';
 import { LegalModal, LegalPageType } from './components/LegalModal';
 import { YouTubeModal } from './components/YouTubeModal';
 import { BookReaderModal } from './components/BookReaderModal';
@@ -19,7 +20,7 @@ import { Sparkles, ArrowRight, BookOpen, Layers, CheckCircle2 } from 'lucide-rea
 export default function App() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [currentView, setCurrentView] = useState<'home' | 'shop' | 'product' | 'order-success' | 'admin'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'shop' | 'product' | 'order-success' | 'admin' | 'flutterwave-return'>('home');
   const [activeSlug, setActiveSlug] = useState<string>('complete-egg-health-guide');
   const [activeOrder, setActiveOrder] = useState<Order | null>(null);
 
@@ -50,6 +51,17 @@ export default function App() {
 
   useEffect(() => {
     fetchProducts();
+
+    // Check if returning from Flutterwave hosted payment
+    try {
+      const searchParams = new URLSearchParams(window.location.search);
+      if (searchParams.has('tx_ref') || searchParams.has('transaction_id') || searchParams.get('flw_return') === '1') {
+        setCurrentView('flutterwave-return');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } catch {
+      // Ignore URL parsing errors
+    }
   }, []);
 
   // Track Analytics
@@ -277,6 +289,24 @@ export default function App() {
                 onBackToStore={() => handleNavigate('home')}
                 onRefreshProducts={fetchProducts}
                 onOpenReader={(id) => setReadingProduct({ id })}
+              />
+            )}
+
+            {/* VIEW 6: FLUTTERWAVE PAYMENT RETURN & VERIFICATION */}
+            {currentView === 'flutterwave-return' && (
+              <FlutterwavePaymentReturn
+                onReturnToCatalog={() => {
+                  try {
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                  } catch {}
+                  handleNavigate('home');
+                }}
+                onOpenPurchases={(email) => {
+                  try {
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                  } catch {}
+                  setIsLookupOpen(true);
+                }}
               />
             )}
           </>

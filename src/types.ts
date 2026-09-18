@@ -38,11 +38,20 @@ export interface CryptoSettings {
   options: CryptoOption[];
 }
 
+export interface FlutterwaveSettings {
+  enabled: boolean;
+  method_name: string;
+  currency: string; // 'NGN' | 'USD'
+  auto_approve: boolean; // default: false (manual admin approval required)
+  instructions: string;
+}
+
 export interface PaymentSettings {
-  // Triple-Method Configurations
+  // Method Configurations
   naira: NigerianNairaSettings;
   paypal: PayPalSettings;
   crypto: CryptoSettings;
+  flutterwave: FlutterwaveSettings;
   updated_at: string;
 
   // Legacy fallback compatibility fields
@@ -168,8 +177,21 @@ export interface Order {
   customer_email: string;
   total_amount: number;
   currency: string;
-  payment_provider: string; // "Manual Confirmation"
+  payment_provider: string; // "Manual Confirmation" | "Flutterwave"
   payment_reference: string; // Unique transaction/reference ID submitted by customer
+  paymentMethod?: string;
+  paymentProvider?: string;
+  flutterwaveTransactionId?: string | null;
+  flutterwaveTxRef?: string | null;
+  flutterwave_transaction_id?: string | null;
+  flutterwave_tx_ref?: string | null;
+  flutterwave_flw_ref?: string | null;
+  verificationStatus?: 'PENDING' | 'VERIFIED' | 'REJECTED';
+  verification_status?: 'PENDING' | 'VERIFIED' | 'REJECTED';
+  paidAt?: string | null;
+  paid_at?: string | null;
+  verifiedAt?: string | null;
+  verified_at?: string | null;
   transactionId?: string; // alias for payment_reference
   payment_status: PaymentStatus;
   payment_proof?: string; // Base64 screenshot or proof url/text

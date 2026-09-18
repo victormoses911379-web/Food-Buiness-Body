@@ -30,7 +30,7 @@ interface CheckoutModalProps {
   onOpenPurchases?: (email: string) => void;
 }
 
-type PaymentMethodType = 'naira' | 'paypal' | 'crypto';
+type PaymentMethodType = 'flutterwave' | 'naira' | 'paypal' | 'crypto';
 
 export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   product,
@@ -44,8 +44,10 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
 
   // Step State: 'method_selection' | 'instructions_and_form'
   const [checkoutStep, setCheckoutStep] = useState<'method_selection' | 'instructions_and_form'>('method_selection');
-  const [selectedMethod, setSelectedMethod] = useState<PaymentMethodType>('naira');
+  const [selectedMethod, setSelectedMethod] = useState<PaymentMethodType>('flutterwave');
   const [selectedCryptoOptionId, setSelectedCryptoOptionId] = useState<string>('');
+  const [selectedCurrency, setSelectedCurrency] = useState<'NGN' | 'USD'>('NGN');
+  const [initiatingFlutterwave, setInitiatingFlutterwave] = useState(false);
 
   // Customer Form State
   const [name, setName] = useState('');
@@ -73,12 +75,15 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
           const loadedSettings = res.data.settings;
           setSettings(loadedSettings);
 
-          // Auto-select first available method if naira is disabled
+          // Auto-select first available method
+          const flutterwaveEnabled = loadedSettings.flutterwave?.enabled ?? true;
           const nairaEnabled = loadedSettings.naira?.enabled ?? true;
           const paypalEnabled = loadedSettings.paypal?.enabled ?? true;
           const cryptoEnabled = loadedSettings.crypto?.enabled ?? true;
 
-          if (nairaEnabled) {
+          if (flutterwaveEnabled) {
+            setSelectedMethod('flutterwave');
+          } else if (nairaEnabled) {
             setSelectedMethod('naira');
           } else if (paypalEnabled) {
             setSelectedMethod('paypal');
@@ -111,7 +116,14 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
       return;
     }
 
-    if (selectedMethod === 'naira') {
+    if (selectedMethod === 'flutterwave') {
+      if (selectedCurrency === 'NGN') {
+        const rate = settings.naira?.naira_rate || 1500;
+        setAmountPaid(Math.round(product.price * rate));
+      } else {
+        setAmountPaid(product.price);
+      }
+    } else if (selectedMethod === 'naira') {
       const rate = settings.naira?.naira_rate || 1500;
       const nairaPrice = Math.round(product.price * rate);
       setAmountPaid(nairaPrice);
@@ -120,7 +132,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
     } else if (selectedMethod === 'crypto') {
       setAmountPaid(product.price);
     }
-  }, [selectedMethod, product, settings]);
+  }, [selectedMethod, selectedCurrency, product, settings]);
 
   const handleCopy = (text: string, key: string) => {
     navigator.clipboard.writeText(text);
@@ -146,6 +158,9 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   };
 
   const getMethodDisplayName = (): string => {
+    if (selectedMethod === 'flutterwave') {
+      return settings?.flutterwave?.method_name || 'Online Payment (Flutterwave)';
+    }
     if (selectedMethod === 'naira') {
       return settings?.naira?.method_name || 'Nigerian Naira (₦)';
     }
@@ -231,6 +246,58 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   };
 
   // Safe Fallback Payment Settings
+  const flutterwaveConfig = settings?.flutterwave || {
+    enabled: true,
+    method_name: 'Online Payment (Flutterwave)',
+    currency: 'NGN',
+    auto_approve: false,
+    instructions: 'Pay securely online using Cards, Bank Transfer, USSD, or Mobile Money via Flutterwave.'
+  };
+
+  const handleFlutterwaveInitiate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMsg(null);
+
+    if (!email.trim()) {
+      setErrorMsg('Please enter your email address for order delivery.');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
+      setErrorMsg('Please enter a valid email address.');
+      return;
+    }
+
+    setInitiatingFlutterwave(true);
+    try {
+      const res = await safeFetchJson('/api/payments/flutterwave/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          productId: product.id,
+          customerName: name.trim() || undefined,
+          customerEmail: email.trim(),
+          currency: selectedCurrency
+        })
+      });
+
+      if (!res.success) {
+        throw new Error(res.message || res.error || 'Failed to initialize Flutterwave payment session.');
+      }
+
+      if (res.data?.paymentLink) {
+        // Redirect directly to Flutterwave hosted checkout
+        window.location.href = res.data.paymentLink;
+      } else {
+        throw new Error('No payment link received from Flutterwave.');
+      }
+    } catch (err: any) {
+      setErrorMsg(err.message || 'Unable to connect to Flutterwave. Please check your network or try another payment method.');
+      setInitiatingFlutterwave(false);
+    }
+  };
+
   const nairaConfig = settings?.naira || {
     enabled: true,
     method_name: 'Nigerian Naira (₦)',
@@ -461,6 +528,61 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                 </div>
 
                 <div className="grid grid-cols-1 gap-3.5">
+                  {/* Card 0: Flutterwave (Instant Online Checkout) */}
+                  {flutterwaveConfig.enabled && (
+                    <div
+                      id="card-payment-flutterwave"
+                      onClick={() => setSelectedMethod('flutterwave')}
+                      className={`p-4 sm:p-5 rounded-2xl border-2 transition-all cursor-pointer flex items-center justify-between gap-4 ${
+                        selectedMethod === 'flutterwave'
+                          ? 'border-stone-900 bg-stone-50 ring-2 ring-stone-900/10 shadow-sm'
+                          : 'border-stone-200 bg-white hover:border-stone-300 hover:bg-stone-50/50'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3.5">
+                        <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-300/40 flex items-center justify-center text-2xl shrink-0">
+                          ⚡
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <h4 className="font-serif font-bold text-stone-900 text-sm sm:text-base">
+                              {flutterwaveConfig.method_name || 'Pay Online (Flutterwave)'}
+                            </h4>
+                            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900">
+                              Cards • Bank • USSD
+                            </span>
+                          </div>
+                          <p className="text-xs text-stone-500 mt-0.5 leading-snug">
+                            Instant online payment via Flutterwave's secure hosted checkout gateway.
+                          </p>
+                          <div className="text-xs font-bold text-stone-800 mt-1 font-serif">
+                            ₦{Math.round(product.price * (nairaConfig.naira_rate || 1500)).toLocaleString()} NGN{' '}
+                            <span className="text-[10px] font-normal text-stone-500 font-sans">
+                              or ${product.price.toFixed(2)} USD
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="shrink-0">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedMethod('flutterwave');
+                          }}
+                          className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                            selectedMethod === 'flutterwave'
+                              ? 'bg-stone-900 text-white'
+                              : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                          }`}
+                        >
+                          {selectedMethod === 'flutterwave' ? 'SELECTED' : 'SELECT'}
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Card 1: Nigerian Naira (₦) */}
                   {nairaConfig.enabled && (
                     <div
@@ -658,8 +780,172 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                   </span>
                 </div>
 
-                {/* INSTRUCTIONS DISPLAY PER METHOD */}
-                <div className="rounded-2xl border-2 border-stone-800 bg-stone-900 text-stone-100 p-5 sm:p-6 shadow-md space-y-5">
+                {/* INSTRUCTIONS DISPLAY & FORM PER METHOD */}
+                {selectedMethod === 'flutterwave' ? (
+                  <form onSubmit={handleFlutterwaveInitiate} className="space-y-5 animate-fade-in">
+                    {/* Flutterwave Info Card */}
+                    <div className="rounded-2xl border-2 border-stone-800 bg-stone-900 text-stone-100 p-5 sm:p-6 shadow-md space-y-4">
+                      <div className="flex items-center justify-between border-b border-stone-800 pb-3">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl">⚡</span>
+                          <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
+                            Flutterwave Hosted Online Gateway
+                          </span>
+                        </div>
+                        <span className="text-[11px] text-stone-400 font-mono">Instant Gateway</span>
+                      </div>
+
+                      <p className="text-xs text-stone-300 leading-relaxed">
+                        You will be redirected to Flutterwave's secure 256-bit encrypted checkout portal to complete your order using card, bank transfer, or USSD.
+                      </p>
+
+                      {/* Currency Switcher */}
+                      <div className="p-3.5 rounded-xl bg-stone-950/80 border border-stone-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div>
+                          <span className="text-[10px] uppercase font-bold text-stone-400 block tracking-wider">
+                            Billing Currency
+                          </span>
+                          <span className="text-xs text-stone-300">
+                            {selectedCurrency === 'NGN' ? 'Nigerian Naira (Cards, Bank Transfer, USSD)' : 'US Dollars (International Cards)'}
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-1.5 bg-stone-800 p-1 rounded-xl shrink-0">
+                          <button
+                            type="button"
+                            onClick={() => setSelectedCurrency('NGN')}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                              selectedCurrency === 'NGN'
+                                ? 'bg-amber-400 text-stone-950 shadow-xs'
+                                : 'text-stone-300 hover:text-white'
+                            }`}
+                          >
+                            ₦ NGN
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setSelectedCurrency('USD')}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                              selectedCurrency === 'USD'
+                                ? 'bg-amber-400 text-stone-950 shadow-xs'
+                                : 'text-stone-300 hover:text-white'
+                            }`}
+                          >
+                            $ USD
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Total Amount Display */}
+                      <div className="flex items-center justify-between p-3.5 rounded-xl bg-stone-800/80 border border-stone-700/60">
+                        <span className="text-xs text-stone-300 font-medium">Exact Amount Billed</span>
+                        <span className="font-serif text-lg font-bold text-amber-300">
+                          {selectedCurrency === 'NGN' 
+                            ? `₦${Math.round(product.price * (nairaConfig.naira_rate || 1500)).toLocaleString()} NGN` 
+                            : `$${product.price.toFixed(2)} USD`}
+                        </span>
+                      </div>
+
+                      {/* Payment Methods Accepted */}
+                      <div className="flex flex-wrap gap-1.5 text-[11px] text-stone-400 pt-1">
+                        <span className="px-2.5 py-1 rounded-md bg-stone-800 text-stone-300 font-mono">Mastercard</span>
+                        <span className="px-2.5 py-1 rounded-md bg-stone-800 text-stone-300 font-mono">Visa</span>
+                        <span className="px-2.5 py-1 rounded-md bg-stone-800 text-stone-300 font-mono">Verve</span>
+                        <span className="px-2.5 py-1 rounded-md bg-stone-800 text-stone-300 font-mono">Bank Transfer</span>
+                        <span className="px-2.5 py-1 rounded-md bg-stone-800 text-stone-300 font-mono">USSD</span>
+                      </div>
+                    </div>
+
+                    {/* Customer Info Form */}
+                    <div className="rounded-2xl border border-stone-200 bg-white p-5 sm:p-6 space-y-4 shadow-xs">
+                      <div className="flex items-center justify-between pb-1 border-b border-stone-200">
+                        <div className="flex items-center gap-2">
+                          <FileText className="w-4 h-4 text-stone-700" />
+                          <h4 className="font-serif font-bold text-stone-900 text-base">
+                            Delivery & Customer Information
+                          </h4>
+                        </div>
+                        <span className="text-[11px] font-semibold text-amber-900 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200">
+                          Secure Checkout
+                        </span>
+                      </div>
+
+                      {errorMsg && (
+                        <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 flex items-start gap-2.5 text-xs text-rose-800 animate-fade-in">
+                          <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+                          <span>{errorMsg}</span>
+                        </div>
+                      )}
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        <div className="space-y-1">
+                          <label htmlFor="customer-name-flw" className="text-xs font-bold text-stone-700 block">
+                            Full Name <span className="text-stone-400 font-normal">(Optional)</span>
+                          </label>
+                          <input
+                            id="customer-name-flw"
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder="e.g. Sarah Jenkins"
+                            className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-hidden focus:ring-2 focus:ring-stone-900 focus:border-stone-900 bg-white"
+                          />
+                        </div>
+
+                        <div className="space-y-1">
+                          <label htmlFor="customer-email-flw" className="text-xs font-bold text-stone-700 block">
+                            Email Address <span className="text-rose-600">*</span>
+                          </label>
+                          <input
+                            id="customer-email-flw"
+                            type="email"
+                            required
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="you@example.com"
+                            className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-hidden focus:ring-2 focus:ring-stone-900 focus:border-stone-900 bg-white"
+                          />
+                          <span className="text-[10px] text-stone-500 block">
+                            Your watermarked PDF download link is linked to this email address.
+                          </span>
+                        </div>
+                      </div>
+
+                      <button
+                        id="btn-proceed-flutterwave"
+                        type="submit"
+                        disabled={initiatingFlutterwave}
+                        className="w-full py-4 px-6 rounded-xl bg-amber-500 hover:bg-amber-600 text-stone-950 font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
+                      >
+                        {initiatingFlutterwave ? (
+                          <>
+                            <Loader2 className="w-4 h-4 animate-spin" />
+                            <span>CONNECTING TO FLUTTERWAVE...</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>PROCEED TO FLUTTERWAVE CHECKOUT</span>
+                            <ExternalLink className="w-4 h-4" />
+                          </>
+                        )}
+                      </button>
+
+                      <div className="flex items-center justify-center gap-4 text-[11px] text-stone-500 pt-1">
+                        <span className="flex items-center gap-1">
+                          <Lock className="w-3 h-3 text-stone-400" />
+                          PCI-DSS Certified
+                        </span>
+                        <span>•</span>
+                        <span>256-Bit SSL Encrypted</span>
+                        <span>•</span>
+                        <span>Flutterwave Hosted</span>
+                      </div>
+                    </div>
+                  </form>
+                ) : (
+                  <>
+                    {/* INSTRUCTIONS DISPLAY PER METHOD */}
+                    <div className="rounded-2xl border-2 border-stone-800 bg-stone-900 text-stone-100 p-5 sm:p-6 shadow-md space-y-5">
                   {/* METHOD A: NIGERIAN NAIRA */}
                   {selectedMethod === 'naira' && (
                     <div className="space-y-4">
@@ -1131,6 +1417,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     <span>Single-User Watermarked PDF</span>
                   </div>
                 </form>
+              </>
+            )}
               </div>
             )}
           </div>

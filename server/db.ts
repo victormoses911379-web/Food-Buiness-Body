@@ -81,6 +81,13 @@ export const DEFAULT_PAYMENT_SETTINGS: PaymentSettings = {
       }
     ]
   },
+  flutterwave: {
+    enabled: true,
+    method_name: 'Flutterwave',
+    currency: 'NGN',
+    auto_approve: process.env.FLUTTERWAVE_AUTO_APPROVE === 'true',
+    instructions: 'Pay securely online using Cards, Bank Transfer, USSD, or Mobile Money via Flutterwave.'
+  },
   payment_method_name: 'Manual Payment Confirmation',
   account_name: 'Victor Moses',
   account_number_or_email: '0123456789',
@@ -594,7 +601,8 @@ class Database {
       !this.data.payment_settings ||
       !this.data.payment_settings.naira ||
       !this.data.payment_settings.paypal ||
-      !this.data.payment_settings.crypto
+      !this.data.payment_settings.crypto ||
+      !this.data.payment_settings.flutterwave
     ) {
       this.data.payment_settings = {
         ...DEFAULT_PAYMENT_SETTINGS,
@@ -614,6 +622,10 @@ class Database {
             this.data.payment_settings?.crypto?.options && this.data.payment_settings.crypto.options.length > 0
               ? this.data.payment_settings.crypto.options
               : DEFAULT_PAYMENT_SETTINGS.crypto.options
+        },
+        flutterwave: {
+          ...DEFAULT_PAYMENT_SETTINGS.flutterwave,
+          ...(this.data.payment_settings?.flutterwave || {})
         },
         updated_at: this.data.payment_settings?.updated_at || new Date().toISOString()
       };
@@ -639,6 +651,10 @@ class Database {
         ...current.crypto,
         ...(settings.crypto || {}),
         options: settings.crypto?.options || current.crypto?.options || DEFAULT_PAYMENT_SETTINGS.crypto.options
+      },
+      flutterwave: {
+        ...current.flutterwave,
+        ...(settings.flutterwave || {})
       },
       updated_at: new Date().toISOString()
     };
@@ -798,6 +814,304 @@ class Database {
       order: newOrder,
       message: 'Payment submitted successfully. Your payment is being reviewed. You will receive access to your PDF once the payment has been confirmed.'
     };
+  }
+
+  // --- FLUTTERWAVE PAYMENT GATEWAY LIFECYCLE ---
+
+  /**
+   * Create an initial order for a Flutterwave checkout session
+   * Calculates the exact price server-side (never trusting browser amounts).
+   * Status is PENDING with zero download tokens until verified and approved.
+   */
+  public createFlutterwaveOrder(params: {
+    productId: string;
+    customerName?: string;
+    customerEmail: string;
+    currency?: string;
+  }): {
+    success: boolean;
+    order?: Order;
+    txRef?: string;
+    amount?: number;
+    currency?: string;
+    product?: Product;
+    message?: string;
+  } {
+    const { productId, customerName, customerEmail, currency } = params;
+
+    if (!productId || !customerEmail) {
+      return { success: false, message: 'Product ID and customer email are required.' };
+    }
+
+    const product = this.getProductById(productId);
+    if (!product) {
+      return { success: false, message: 'Product not found.' };
+    }
+
+    const settings = this.getPaymentSettings();
+    const chosenCurrency = (currency || settings.flutterwave?.currency || 'NGN').toUpperCase();
+
+    // Server-side amount calculation
+    let calculatedAmount = product.price;
+    if (chosenCurrency === 'NGN') {
+      const rate = settings.naira?.naira_rate || 1500;
+      calculatedAmount = Math.round(product.price * rate);
+    } else {
+      calculatedAmount = Number(product.price.toFixed(2));
+    }
+
+    const now = new Date().toISOString();
+    const orderNumber = `ORD-${new Date().getFullYear()}${String(new Date().getMonth() + 1).padStart(2, '0')}-${String(this.data.orders.length + 1).padStart(6, '0')}`;
+    const orderId = `ord_flw_${Date.now()}_${crypto.randomBytes(3).toString('hex')}`;
+    const txRef = `FLW-${orderNumber}-${Date.now().toString(36)}`;
+
+    // Find or create customer
+    let user = this.data.users.find(u => u.email.toLowerCase() === customerEmail.toLowerCase().trim());
+    if (!user) {
+      user = {
+        id: `usr_${Date.now()}_${crypto.randomBytes(3).toString('hex')}`,
+        name: customerName?.trim() || customerEmail.split('@')[0],
+        email: customerEmail.toLowerCase().trim(),
+        created_at: now,
+        updated_at: now
+      };
+      this.data.users.push(user);
+    } else if (customerName && !user.name) {
+      user.name = customerName.trim();
+      user.updated_at = now;
+    }
+
+    const orderItems: OrderItem[] = [{
+      id: `item_${Date.now()}_0`,
+      order_id: orderId,
+      product_id: product.id,
+      product_name: product.name,
+      unit_price: product.price,
+      quantity: 1,
+      subtotal: product.price
+    }];
+
+    const newOrder: Order = {
+      id: orderId,
+      order_number: orderNumber,
+      paymentId: orderId,
+      user_id: user.id,
+      customer_name: customerName?.trim() || user.name,
+      customer_email: customerEmail.toLowerCase().trim(),
+      total_amount: calculatedAmount,
+      currency: chosenCurrency,
+      payment_provider: 'Flutterwave',
+      paymentMethod: 'FLUTTERWAVE',
+      paymentProvider: 'flutterwave',
+      payment_reference: txRef,
+      flutterwave_tx_ref: txRef,
+      flutterwaveTxRef: txRef,
+      flutterwave_transaction_id: null,
+      flutterwaveTransactionId: null,
+      payment_status: 'PENDING',
+      status: 'PENDING',
+      verification_status: 'PENDING',
+      verificationStatus: 'PENDING',
+      confirmation_confirmed: true,
+      items: orderItems,
+      downloads: [], // STRICT: 0 download tokens issued before approval
+      created_at: now,
+      createdAt: now,
+      updated_at: now,
+      updatedAt: now
+    };
+
+    this.data.orders.unshift(newOrder);
+    orderItems.forEach(it => this.data.order_items.push(it));
+    this.saveData();
+
+    // Background sync to Firestore
+    syncPaymentToFirestore(newOrder).catch(err => {
+      console.warn('[Firestore] Background payment sync error:', err);
+    });
+
+    return {
+      success: true,
+      order: newOrder,
+      txRef,
+      amount: calculatedAmount,
+      currency: chosenCurrency,
+      product
+    };
+  }
+
+  /**
+   * Find order by Flutterwave tx_ref, order number, or internal ID
+   */
+  public getOrderByTxRef(txRef: string): Order | undefined {
+    const trimmed = (txRef || '').trim();
+    if (!trimmed) return undefined;
+    return this.data.orders.find(
+      o => o.flutterwave_tx_ref === trimmed ||
+           o.flutterwaveTxRef === trimmed ||
+           o.payment_reference === trimmed ||
+           o.order_number === trimmed ||
+           o.id === trimmed
+    );
+  }
+
+  /**
+   * Find order by Flutterwave numeric or string transaction ID
+   */
+  public getOrderByFlutterwaveTxId(transactionId: string | number): Order | undefined {
+    const strId = String(transactionId).trim();
+    if (!strId) return undefined;
+    return this.data.orders.find(
+      o => o.flutterwave_transaction_id === strId ||
+           o.flutterwaveTransactionId === strId
+    );
+  }
+
+  /**
+   * Process and verify Flutterwave transaction
+   * Enforces strict idempotency, duplicate prevention, and configurable auto-approval.
+   */
+  public verifyAndProcessFlutterwaveOrder(params: {
+    transactionId: string | number;
+    txRef: string;
+    flwRef?: string;
+    paidAmount: number;
+    paidCurrency: string;
+    rawVerificationData?: any;
+  }): {
+    success: boolean;
+    order?: Order;
+    isApproved?: boolean;
+    alreadyProcessed?: boolean;
+    message: string;
+  } {
+    const { transactionId, txRef, flwRef, paidAmount, paidCurrency } = params;
+
+    let order = this.getOrderByTxRef(txRef) || this.getOrderByFlutterwaveTxId(transactionId);
+    if (!order) {
+      return {
+        success: false,
+        message: `No corresponding order found for transaction reference "${txRef}".`
+      };
+    }
+
+    // 1. Check if order was already approved (Idempotent replay protection)
+    if (order.payment_status === 'APPROVED' || order.payment_status === 'PAID') {
+      return {
+        success: true,
+        alreadyProcessed: true,
+        isApproved: true,
+        order,
+        message: 'Order has already been approved and download access unlocked.'
+      };
+    }
+
+    // 2. Validate Currency and Amount Integrity
+    if (paidCurrency.toUpperCase() !== order.currency.toUpperCase()) {
+      return {
+        success: false,
+        message: `Payment currency mismatch: received ${paidCurrency}, expected ${order.currency}.`
+      };
+    }
+
+    const priceDiff = Math.abs(paidAmount - order.total_amount);
+    if (priceDiff > 0.05 && paidAmount < order.total_amount) {
+      return {
+        success: false,
+        message: `Payment underpaid: received ${paidAmount} ${paidCurrency}, expected ${order.total_amount} ${order.currency}.`
+      };
+    }
+
+    const now = new Date().toISOString();
+
+    // 3. Mark transaction as VERIFIED
+    const strTxId = String(transactionId);
+    order.flutterwave_transaction_id = strTxId;
+    order.flutterwaveTransactionId = strTxId;
+    order.flutterwave_flw_ref = flwRef || null;
+    order.verification_status = 'VERIFIED';
+    order.verificationStatus = 'VERIFIED';
+    order.verified_at = now;
+    order.verifiedAt = now;
+    order.paid_at = now;
+    order.paidAt = now;
+    order.updated_at = now;
+    order.updatedAt = now;
+
+    // Check if auto-approve is active
+    const settings = this.getPaymentSettings();
+    const autoApprove = (settings.flutterwave?.auto_approve === true) ||
+      (process.env.FLUTTERWAVE_AUTO_APPROVE === 'true');
+
+    if (autoApprove) {
+      // Auto-approve: unlock guide immediately
+      const approval = this.approveOrder(order.id, 'Flutterwave Auto-Approval');
+      return {
+        success: true,
+        isApproved: true,
+        order: approval.order || order,
+        message: 'Payment verified and approved automatically! Digital guide is ready for download.'
+      };
+    } else {
+      // Manual admin approval flow (Default): keep status PENDING with zero download tokens
+      order.payment_status = 'PENDING';
+      order.status = 'PENDING';
+      order.downloads = []; // Strictly locked until admin reviews
+
+      this.saveData();
+
+      // Dispatch Customer Email informing them payment was received and is under review
+      const product = this.getProductById(order.items[0]?.product_id);
+      const pendingEmail: EmailLog = {
+        id: `em_${Date.now()}_flw_verified`,
+        recipient_email: order.customer_email,
+        recipient_name: order.customer_name,
+        subject: `Payment Received via Flutterwave — Pending Verification (${order.order_number})`,
+        type: 'PURCHASE_CONFIRMATION',
+        order_number: order.order_number,
+        product_name: product?.name || 'Publication',
+        body_text: `Your online payment via Flutterwave has been successfully received!\n\nOrder: ${order.order_number}\nTransaction ID: ${strTxId}\nAmount: ${order.currency === 'NGN' ? '₦' : '$'}${order.total_amount.toLocaleString()} ${order.currency}\n\nOur team is currently reviewing your order before unlocking your watermarked PDF download. You can track this order anytime under "My Purchases".`,
+        download_urls: [],
+        sent_at: now,
+        status: 'SENT'
+      };
+      this.data.emails.unshift(pendingEmail);
+
+      syncPaymentToFirestore(order).catch(err => {
+        console.warn('[Firestore] Background payment sync error:', err);
+      });
+
+      return {
+        success: true,
+        isApproved: false,
+        order,
+        message: 'Payment received and verified successfully. Your order is awaiting administrator review before the digital guide is released.'
+      };
+    }
+  }
+
+  /**
+   * Mark a Flutterwave payment as failed or cancelled
+   */
+  public markFlutterwaveOrderFailed(txRef: string, reason?: string): { success: boolean; order?: Order } {
+    const order = this.getOrderByTxRef(txRef);
+    if (!order) return { success: false };
+
+    order.payment_status = 'FAILED';
+    order.status = 'FAILED';
+    order.verification_status = 'REJECTED';
+    order.verificationStatus = 'REJECTED';
+    order.rejection_reason = reason || 'Payment was cancelled or unsuccessful on Flutterwave.';
+    order.updated_at = new Date().toISOString();
+    order.updatedAt = order.updated_at;
+
+    this.saveData();
+
+    syncPaymentToFirestore(order).catch(err => {
+      console.warn('[Firestore] Background payment sync error:', err);
+    });
+
+    return { success: true, order };
   }
 
   /**
@@ -1144,10 +1458,38 @@ class Database {
 
   // --- ORDERS & CUSTOMER LOOKUP ---
   public getOrders(statusFilter?: string): Order[] {
-    if (!statusFilter || statusFilter === 'ALL') {
+    if (!statusFilter || statusFilter.toUpperCase() === 'ALL') {
       return this.data.orders;
     }
-    return this.data.orders.filter(o => o.payment_status === statusFilter);
+    const filterUpper = statusFilter.toUpperCase();
+
+    if (filterUpper === 'FLUTTERWAVE') {
+      return this.data.orders.filter(o => 
+        o.payment_provider?.toLowerCase().includes('flutterwave') ||
+        o.paymentMethod === 'FLUTTERWAVE' ||
+        o.paymentProvider === 'flutterwave'
+      );
+    }
+
+    if (filterUpper === 'MANUAL') {
+      return this.data.orders.filter(o => 
+        !o.payment_provider?.toLowerCase().includes('flutterwave') &&
+        o.paymentMethod !== 'FLUTTERWAVE' &&
+        o.paymentProvider !== 'flutterwave'
+      );
+    }
+
+    if (filterUpper === 'VERIFIED') {
+      return this.data.orders.filter(o => 
+        o.verification_status === 'VERIFIED' ||
+        o.verificationStatus === 'VERIFIED'
+      );
+    }
+
+    return this.data.orders.filter(o => 
+      o.payment_status === filterUpper || 
+      (o as any).status === filterUpper
+    );
   }
 
   public getOrderByIdOrNumber(idOrNumber: string): Order | undefined {

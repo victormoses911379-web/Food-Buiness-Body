@@ -18,6 +18,17 @@ service cloud.firestore {
     // ==========================================
     // PAYMENTS & ORDERS
     // ==========================================
+    match /orders/{orderId} {
+      allow read: if isAdmin() || (isAuthenticated() && resource.data.customer_email == request.auth.token.email);
+      allow create: if
+        request.resource.data.payment_status == 'PENDING' &&
+        request.resource.data.customer_email is string &&
+        request.resource.data.total_amount is number &&
+        request.resource.data.total_amount > 0;
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
     match /payments/{paymentId} {
       // Admins can read all payments; customers can only read their own payments if authenticated
       allow read: if isAdmin() || (isAuthenticated() && resource.data.customerEmail == request.auth.token.email);

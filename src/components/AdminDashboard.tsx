@@ -85,8 +85,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToStore, o
   // Tabs: 'orders' | 'payment-settings' | 'products' | 'customers' | 'emails' | 'qa'
   const [activeTab, setActiveTab] = useState<'orders' | 'payment-settings' | 'products' | 'customers' | 'emails' | 'qa'>('orders');
 
-  // Payment settings sub-tab: 'naira' | 'paypal' | 'crypto'
-  const [activePaymentSubTab, setActivePaymentSubTab] = useState<'naira' | 'paypal' | 'crypto'>('naira');
+  // Payment settings sub-tab: 'flutterwave' | 'naira' | 'paypal' | 'crypto'
+  const [activePaymentSubTab, setActivePaymentSubTab] = useState<'flutterwave' | 'naira' | 'paypal' | 'crypto'>('flutterwave');
 
   // Data states
   const [orders, setOrders] = useState<Order[]>([]);
@@ -129,6 +129,13 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToStore, o
 
   // Payment Settings State (Full Multi-Method)
   const [paymentSettings, setPaymentSettings] = useState<PaymentSettings>({
+    flutterwave: {
+      enabled: true,
+      method_name: 'Online Payment (Flutterwave)',
+      currency: 'NGN',
+      auto_approve: false,
+      instructions: 'Pay securely online using Cards, Bank Transfer, USSD, or Mobile Money via Flutterwave.'
+    },
     naira: {
       enabled: true,
       method_name: 'Nigerian Naira (₦)',
@@ -221,7 +228,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToStore, o
     { id: 't3', name: 'Admin Approval: Approve Order (Transitions to APPROVED, generates token, unlocks PDF)', status: 'idle' },
     { id: 't4', name: 'Download Delivery: Approved Token streams watermarked binary PDF', status: 'idle' },
     { id: 't5', name: 'Admin Rejection: Rejection revokes access and logs reason', status: 'idle' },
-    { id: 't6', name: 'Payment Settings: Multi-method settings persistence (Naira, PayPal, Crypto)', status: 'idle' }
+    { id: 't6', name: 'Payment Settings: Multi-method settings persistence (Naira, PayPal, Crypto, Flutterwave)', status: 'idle' },
+    { id: 't7', name: 'Flutterwave Gateway: Server-side pricing calculation, session creation & signature verification', status: 'idle' }
   ]);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -338,6 +346,23 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToStore, o
       }
     } catch (err: any) {
       alert(err.message);
+    }
+  };
+
+  const handleVerifyFlutterwave = async (orderId: string) => {
+    try {
+      setActionMessage('Querying Flutterwave API for transaction verification...');
+      const res = await authFetch(`/api/admin/orders/${orderId}/verify-flutterwave`, {
+        method: 'POST'
+      });
+      if (res.success) {
+        setActionMessage(res.message || 'Flutterwave status queried successfully.');
+        loadAdminData();
+      } else {
+        alert(res.message || res.error || 'Flutterwave verification could not be completed.');
+      }
+    } catch (err: any) {
+      alert(err.message || 'Verification call failed');
     }
   };
 
@@ -645,6 +670,25 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToStore, o
     }
     setQaResults([...newResults]);
 
+    // Test 7: Flutterwave Gateway Integration Test
+    newResults[6].status = 'running';
+    setQaResults([...newResults]);
+    try {
+      const flwQa = await authFetch('/api/qa/flutterwave-test', { method: 'POST' });
+      if (flwQa.success) {
+        const d = flwQa.data || {};
+        newResults[6].status = 'pass';
+        newResults[6].message = `Success: Flutterwave suite passed. Order: ${d.created_order?.order_number || 'OK'}, Verification: ${d.verification_result?.verified ? 'VERIFIED' : 'OK'}, Idempotency: OK.`;
+      } else {
+        newResults[6].status = 'fail';
+        newResults[6].message = flwQa.message || 'Flutterwave QA test suite failed';
+      }
+    } catch (err: any) {
+      newResults[6].status = 'fail';
+      newResults[6].message = err.message || 'Flutterwave QA call failed';
+    }
+    setQaResults([...newResults]);
+
     loadAdminData();
   };
 
@@ -744,6 +788,14 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToStore, o
     method_name: 'Crypto',
     instructions: '1. Select your preferred cryptocurrency from the options below.\n2. Send the exact amount to the designated wallet address.\n3. Make sure to choose the correct network.\n4. Copy your Transaction Hash / TxID from your wallet or exchange.\n5. Submit your TxID and optional screenshot below for blockchain verification.',
     options: []
+  };
+
+  const flutterwave = paymentSettings.flutterwave || {
+    enabled: true,
+    method_name: 'Online Payment (Flutterwave)',
+    currency: 'NGN',
+    auto_approve: false,
+    instructions: 'Pay securely online using Cards, Bank Transfer, USSD, or Mobile Money via Flutterwave.'
   };
 
   return (
@@ -1031,8 +1083,18 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToStore, o
 
                       {/* Payment Method Badge */}
                       <td className="p-3.5">
-                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[10px] font-bold bg-stone-100 text-stone-800 border border-stone-200">
-                          {order.payment_provider?.includes('Naira') ? '🇳🇬' : order.payment_provider?.includes('PayPal') ? '💳' : '₿'}
+                        <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[10px] font-bold border ${
+                          order.payment_method === 'flutterwave' || order.payment_provider?.toLowerCase().includes('flutterwave')
+                            ? 'bg-amber-50 text-amber-950 border-amber-300'
+                            : 'bg-stone-100 text-stone-800 border-stone-200'
+                        }`}>
+                          {(order.payment_method === 'flutterwave' || order.payment_provider?.toLowerCase().includes('flutterwave'))
+                            ? '⚡'
+                            : order.payment_provider?.includes('Naira')
+                            ? '🇳🇬'
+                            : order.payment_provider?.includes('PayPal')
+                            ? '💳'
+                            : '₿'}
                           <span className="truncate max-w-[120px]">{order.payment_provider || 'Manual'}</span>
                         </span>
                       </td>
@@ -1099,6 +1161,16 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToStore, o
 
                           {order.payment_status === 'PENDING' ? (
                             <>
+                              {(order.payment_method === 'flutterwave' || order.payment_provider?.toLowerCase().includes('flutterwave')) && (
+                                <button
+                                  onClick={() => handleVerifyFlutterwave(order.id)}
+                                  className="px-2.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-stone-950 text-xs font-bold transition-all shadow-xs flex items-center gap-1"
+                                  title="Check and query Flutterwave API to verify transaction"
+                                >
+                                  <RefreshCw className="w-3 h-3" />
+                                  <span>Verify FLW</span>
+                                </button>
+                              )}
                               <button
                                 id={`btn-approve-${order.id}`}
                                 onClick={() => handleApproveOrder(order.id)}
@@ -1179,8 +1251,26 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToStore, o
               </div>
             )}
 
-            {/* Sub-Tabs for the 3 Methods */}
-            <div className="flex items-center gap-2 border-b border-stone-200 pb-2">
+            {/* Sub-Tabs for Payment Methods */}
+            <div className="flex flex-wrap items-center gap-2 border-b border-stone-200 pb-2">
+              <button
+                type="button"
+                onClick={() => setActivePaymentSubTab('flutterwave')}
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  activePaymentSubTab === 'flutterwave'
+                    ? 'bg-amber-500 text-stone-950 shadow-xs'
+                    : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                }`}
+              >
+                <span>⚡</span>
+                <span>Flutterwave</span>
+                {flutterwave.enabled ? (
+                  <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
+                ) : (
+                  <span className="w-2 h-2 rounded-full bg-stone-400"></span>
+                )}
+              </button>
+
               <button
                 type="button"
                 onClick={() => setActivePaymentSubTab('naira')}
@@ -1237,6 +1327,131 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToStore, o
             </div>
 
             <form onSubmit={handleSavePaymentSettings} className="space-y-5">
+              {/* SUB-TAB 0: FLUTTERWAVE GATEWAY */}
+              {activePaymentSubTab === 'flutterwave' && (
+                <div className="space-y-4 animate-fade-in">
+                  <div className="flex items-center justify-between p-3.5 rounded-xl bg-stone-50 border border-stone-200">
+                    <div>
+                      <span className="text-xs font-bold text-stone-900 block">Enable Flutterwave Gateway</span>
+                      <span className="text-[11px] text-stone-500">Show Flutterwave online checkout option at checkout</span>
+                    </div>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={flutterwave.enabled}
+                        onChange={(e) => setPaymentSettings({
+                          ...paymentSettings,
+                          flutterwave: { ...flutterwave, enabled: e.target.checked }
+                        })}
+                        className="sr-only peer"
+                      />
+                      <div className="w-11 h-6 bg-stone-300 peer-focus:outline-hidden rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-500"></div>
+                    </label>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-stone-800 block">
+                        Method Display Title <span className="text-rose-600">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={flutterwave.method_name}
+                        onChange={(e) => setPaymentSettings({
+                          ...paymentSettings,
+                          flutterwave: { ...flutterwave, method_name: e.target.value }
+                        })}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-xs sm:text-sm text-stone-900 focus:outline-hidden focus:ring-2 focus:ring-stone-900 bg-white"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-stone-800 block">
+                        Default Currency
+                      </label>
+                      <select
+                        value={flutterwave.currency || 'NGN'}
+                        onChange={(e) => setPaymentSettings({
+                          ...paymentSettings,
+                          flutterwave: { ...flutterwave, currency: e.target.value as 'NGN' | 'USD' }
+                        })}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-xs sm:text-sm text-stone-900 focus:outline-hidden focus:ring-2 focus:ring-stone-900 bg-white"
+                      >
+                        <option value="NGN">Nigerian Naira (NGN - ₦)</option>
+                        <option value="USD">US Dollar (USD - $)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Auto-Approve Toggle */}
+                  <div className="flex items-center justify-between p-3.5 rounded-xl bg-amber-50/70 border border-amber-200">
+                    <div>
+                      <span className="text-xs font-bold text-stone-900 block">Instant Auto-Approval</span>
+                      <span className="text-[11px] text-stone-600">
+                        {flutterwave.auto_approve 
+                          ? 'Automatic: Verified payments instantly unlock watermarked PDF downloads without requiring manual admin approval.' 
+                          : 'Manual Review: Verified payments remain in PENDING status until an administrator clicks Approve.'}
+                      </span>
+                    </div>
+                    <label className="relative inline-flex items-center cursor-pointer shrink-0 ml-3">
+                      <input
+                        type="checkbox"
+                        checked={Boolean(flutterwave.auto_approve)}
+                        onChange={(e) => setPaymentSettings({
+                          ...paymentSettings,
+                          flutterwave: { ...flutterwave, auto_approve: e.target.checked }
+                        })}
+                        className="sr-only peer"
+                      />
+                      <div className="w-11 h-6 bg-stone-300 peer-focus:outline-hidden rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600"></div>
+                    </label>
+                  </div>
+
+                  {/* Webhook Endpoint Info */}
+                  <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold text-stone-800 flex items-center gap-1.5">
+                        <Lock className="w-3.5 h-3.5 text-stone-500" />
+                        Webhook Notification URL
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          navigator.clipboard.writeText(`${window.location.origin}/api/webhooks/flutterwave`);
+                          setActionMessage('Webhook URL copied to clipboard!');
+                          setTimeout(() => setActionMessage(null), 3000);
+                        }}
+                        className="text-[11px] text-emerald-800 hover:text-emerald-950 font-bold underline"
+                      >
+                        Copy URL
+                      </button>
+                    </div>
+                    <div className="font-mono text-[11px] bg-white p-2 rounded-lg border border-stone-300 break-all select-all text-stone-700">
+                      {window.location.origin}/api/webhooks/flutterwave
+                    </div>
+                    <p className="text-[11px] text-stone-500">
+                      Add this URL to your Flutterwave Dashboard Webhooks. Enter your secret hash in <span className="font-mono">FLW_SECRET_HASH</span>.
+                    </p>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-stone-800 block">
+                      Checkout Instructions
+                    </label>
+                    <textarea
+                      rows={3}
+                      value={flutterwave.instructions}
+                      onChange={(e) => setPaymentSettings({
+                        ...paymentSettings,
+                        flutterwave: { ...flutterwave, instructions: e.target.value }
+                      })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-xs sm:text-sm text-stone-900 focus:outline-hidden focus:ring-2 focus:ring-stone-900 bg-white leading-relaxed font-mono"
+                    />
+                  </div>
+                </div>
+              )}
+
               {/* SUB-TAB 1: NIGERIAN NAIRA */}
               {activePaymentSubTab === 'naira' && (
                 <div className="space-y-4 animate-fade-in">
