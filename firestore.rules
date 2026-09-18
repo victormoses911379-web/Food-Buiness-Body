@@ -1,0 +1,83 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions for Role-Based Access Control (RBAC)
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.admin == true ||
+        request.auth.token.role == 'admin' ||
+        request.auth.token.email == 'admin@foodandbodypub.com'
+      );
+    }
+
+    // ==========================================
+    // PAYMENTS & ORDERS
+    // ==========================================
+    match /payments/{paymentId} {
+      // Admins can read all payments; customers can only read their own payments if authenticated
+      allow read: if isAdmin() || (isAuthenticated() && resource.data.customerEmail == request.auth.token.email);
+
+      // Public / Customer can CREATE new payment submission, with strict field validations
+      allow create: if
+        // Must start with pending status
+        request.resource.data.status == 'pending' &&
+        // Cannot assign download token upon submission
+        request.resource.data.downloadToken == null &&
+        request.resource.data.approvedAt == null &&
+        request.resource.data.rejectedAt == null &&
+        // Required fields
+        request.resource.data.customerEmail is string &&
+        request.resource.data.transactionId is string &&
+        request.resource.data.amount is number &&
+        request.resource.data.amount > 0;
+
+      // Only authenticated admins can update payment status, approve, reject, or assign tokens
+      allow update: if isAdmin();
+
+      // Only admins can delete records
+      allow delete: if isAdmin();
+    }
+
+    // ==========================================
+    // PAYMENT SETTINGS (Naira, PayPal, Crypto)
+    // ==========================================
+    match /payment_settings/{settingId} {
+      // Anyone can read active payment settings/instructions to pay
+      allow read: if true;
+
+      // Only authenticated admins can modify payment settings, addresses, or bank details
+      allow write: if isAdmin();
+    }
+
+    // ==========================================
+    // PRODUCTS
+    // ==========================================
+    match /products/{productId} {
+      // Public can view products
+      allow read: if true;
+
+      // Only admins can create, edit, or archive products
+      allow write: if isAdmin();
+    }
+
+    // ==========================================
+    // EMAIL & AUDIT LOGS
+    // ==========================================
+    match /emails/{emailId} {
+      allow read, write: if isAdmin();
+    }
+
+    // ==========================================
+    // DOWNLOAD TOKENS (Private secure entitlements)
+    // ==========================================
+    match /downloads/{downloadId} {
+      // Token records are only accessible by backend service or admin
+      allow read, write: if isAdmin();
+    }
+  }
+}

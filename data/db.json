@@ -1,0 +1,1923 @@
+{
+  "products": [
+    {
+      "id": "EGG-001",
+      "name": "The Complete Egg Health Guide",
+      "slug": "complete-egg-health-guide",
+      "subtitle": "What Happens Inside Your Body When You Eat Eggs",
+      "short_description": "A visual guide to egg nutrition, digestion, cholesterol, and safety.",
+      "description": "An evidence-based, highly visual breakdown of dietary cholesterol versus serum lipids, choline synthesis for neural vitality, lutein bioavailability, and optimal culinary temperature protocols.",
+      "price": 9.99,
+      "currency": "USD",
+      "type": "SINGLE",
+      "status": "PUBLISHED",
+      "cover_image": "https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=800&auto=format&fit=crop&q=80",
+      "file_reference": "private/storage/egg-guide.pdf",
+      "pages": 48,
+      "format": "Digital PDF (Interactive & Printable • DRM Free)",
+      "benefits": [
+        "Visual breakdown of HMG-CoA reductase and hepatic cholesterol compensation",
+        "The 300mg choline threshold for liver detox & acetylcholine memory pathways",
+        "Macular carotenoids: 3x absorption mechanics in natural lipid matrix",
+        "Safe cooking temperatures: preventing oxidized sterol formation"
+      ],
+      "what_is_included": [
+        {
+          "chapter": "01",
+          "title": "The Anatomy of an Egg",
+          "description": "Yolk vs. albumen breakdown, phospholipid matrix, and bioavailability rankings.",
+          "pages": "p. 4-11"
+        },
+        {
+          "chapter": "02",
+          "title": "Cholesterol Demystified",
+          "description": "LDL particle sizing (Pattern A vs. B), HDL remodeling, and ApoB markers.",
+          "pages": "p. 12-22"
+        },
+        {
+          "chapter": "03",
+          "title": "Brain & Liver Biochemistry",
+          "description": "Phosphatidylcholine transport, cell membrane fluidity, and methylation.",
+          "pages": "p. 23-33"
+        },
+        {
+          "chapter": "04",
+          "title": "Culinary Chemistry & Safety",
+          "description": "Heat thresholds, raw vs cooked avidin binding, and pasture quality standards.",
+          "pages": "p. 34-48"
+        }
+      ],
+      "preview_pages": [
+        {
+          "pageNumber": 8,
+          "title": "Lipid Suspension Matrix",
+          "caption": "How egg yolk phospholipids encapsulate fat-soluble vitamins A, D, E, K.",
+          "highlight": "300% Carotenoid Bioavailability"
+        },
+        {
+          "pageNumber": 17,
+          "title": "Hepatic Cholesterol Balance",
+          "caption": "Cellular feedback loop between dietary sterols and liver biosynthesis.",
+          "highlight": "70% of People are Hypo-Responders"
+        },
+        {
+          "pageNumber": 28,
+          "title": "The Choline Pathway",
+          "caption": "From digestive lumen to phosphatidylcholine synthesis in hepatocytes.",
+          "highlight": "Critical for Cell Membrane Integrity"
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Will the cholesterol in eggs increase my risk of heart disease?",
+          "answer": "Extensive randomized controlled trials demonstrate that dietary cholesterol has minimal impact on serum LDL-C in 70%+ of individuals. This guide details the exact hepatic feedback mechanism."
+        },
+        {
+          "question": "How is this delivered?",
+          "answer": "Instant PDF download upon checkout, plus a secure link sent to your email with lifetime access on all your devices."
+        },
+        {
+          "question": "Can I print this guide?",
+          "answer": "Yes! The PDF is rendered at 300 DPI high-definition vector typography, formatted perfectly for A4/Letter home printing or iPad/tablet reading."
+        }
+      ],
+      "created_at": "2026-09-01T10:00:00.000Z",
+      "updated_at": "2026-09-01T10:00:00.000Z"
+    },
+    {
+      "id": "SUG-001",
+      "name": "Sugar & Your Body",
+      "slug": "sugar-and-your-body",
+      "subtitle": "The Metabolic Guide to Fructose, Glucose & Cellular Energy",
+      "short_description": "A visual blueprint of blood sugar spikes, insulin resistance, cravings, and hidden sugars.",
+      "description": "Discover the cellular mechanics of glycemic volatility, hepatic fructose conversion, advanced glycation end-products, and a 14-day protocol to break free from reactive afternoon crashes.",
+      "price": 9.99,
+      "currency": "USD",
+      "type": "SINGLE",
+      "status": "PUBLISHED",
+      "cover_image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800&auto=format&fit=crop&q=80",
+      "file_reference": "private/storage/sugar-guide.pdf",
+      "pages": 52,
+      "format": "Digital PDF (Interactive & Printable • DRM Free)",
+      "benefits": [
+        "Visual glucose curve analysis: spikes vs gentle sustained energy plateaus",
+        "The hepatic fructose bottleneck: why the liver metabolizes fructose like ethanol",
+        "Craving neurology: dopamine surges in the nucleus accumbens",
+        "Ingredient decoder: uncovering the 56 industrial aliases of added sugar"
+      ],
+      "what_is_included": [
+        {
+          "chapter": "01",
+          "title": "The Carbohydrate Spectrum",
+          "description": "Monosaccharides vs polysaccharides, molecular bonds, and salivary amylase.",
+          "pages": "p. 4-13"
+        },
+        {
+          "chapter": "02",
+          "title": "The Post-Meal Glucose Rollercoaster",
+          "description": "Insulin secretion, GLUT4 translocation, and reactive hypoglycemia crashes.",
+          "pages": "p. 14-25"
+        },
+        {
+          "chapter": "03",
+          "title": "Fructose & Fatty Liver Dynamics",
+          "description": "De novo lipogenesis, uric acid accumulation, and visceral fat storage.",
+          "pages": "p. 26-38"
+        },
+        {
+          "chapter": "04",
+          "title": "The 14-Day Reset Blueprint",
+          "description": "Savory breakfast structures, fiber sequencing, and label translation tools.",
+          "pages": "p. 39-52"
+        }
+      ],
+      "preview_pages": [
+        {
+          "pageNumber": 12,
+          "title": "The 3:30 PM Craving Loop",
+          "caption": "Step-by-step hormone cascade following a high-glycemic lunchtime meal.",
+          "highlight": "Reactive Hypoglycemia Explained"
+        },
+        {
+          "pageNumber": 24,
+          "title": "Fructose vs Glucose Metabolic Route",
+          "caption": "Why glucose distributes to muscle glycogen while fructose is trapped in liver cells.",
+          "highlight": "Hepatic De Novo Lipogenesis"
+        },
+        {
+          "pageNumber": 42,
+          "title": "Food Order Sequencing",
+          "caption": "Consuming vegetables and protein before carbs reduces peak glucose spike by 40%.",
+          "highlight": "Meal Sequencing Blueprint"
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Do I have to eliminate all fruit and carbohydrates?",
+          "answer": "No. The guide highlights the critical difference between cellular fruit sugars bound in fibrous plant cells vs acellular refined sugars in processed foods."
+        },
+        {
+          "question": "Is this suitable for pre-diabetics?",
+          "answer": "Yes, the visual diagrams make insulin sensitivity and postprandial glucose regulation extraordinarily easy to understand."
+        }
+      ],
+      "created_at": "2026-09-02T10:00:00.000Z",
+      "updated_at": "2026-09-02T10:00:00.000Z"
+    },
+    {
+      "id": "FIB-001",
+      "name": "The Complete Fiber Guide",
+      "slug": "complete-fiber-guide",
+      "subtitle": "The Microbiome, Digestion & Gut Health Blueprint",
+      "short_description": "A visual guide to gut flora, short-chain fatty acids, digestive transit, and gut barrier integrity.",
+      "description": "Transform your digestive vitality with visual mappings of soluble vs insoluble fiber fermentation, butyrate fuel for colonocytes, microbiome diversity, and bloating reduction protocols.",
+      "price": 9.99,
+      "currency": "USD",
+      "type": "SINGLE",
+      "status": "PUBLISHED",
+      "cover_image": "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800&auto=format&fit=crop&q=80",
+      "file_reference": "private/storage/fiber-guide.pdf",
+      "pages": 56,
+      "format": "Digital PDF (Interactive & Printable • DRM Free)",
+      "benefits": [
+        "Visual distinction: viscous, fermentable, prebiotic vs insoluble structural fiber",
+        "The SCFA powerhouse: how butyrate fuels colonocytes and tight junctions",
+        "The 30-plants-per-week microbiome diversity target",
+        "Gentle titration protocol: how to increase fiber without gas or bloating"
+      ],
+      "what_is_included": [
+        {
+          "chapter": "01",
+          "title": "The Intestinal Architecture",
+          "description": "Mucosal layer, villi, microvilli, and gut-associated lymphoid tissue (GALT).",
+          "pages": "p. 4-14"
+        },
+        {
+          "chapter": "02",
+          "title": "The Microbial Fermentation Factory",
+          "description": "Bacteroidetes vs Firmicutes, bacterial enzymes, and gas synthesis.",
+          "pages": "p. 15-28"
+        },
+        {
+          "chapter": "03",
+          "title": "Short-Chain Fatty Acids (SCFAs)",
+          "description": "Acetate, propionate, and butyrate signalling across the gut-brain axis.",
+          "pages": "p. 29-41"
+        },
+        {
+          "chapter": "04",
+          "title": "The Gradual Titration Roadmap",
+          "description": "5-gram stepwise increments, hydration pairings, and low-FODMAP swaps.",
+          "pages": "p. 42-56"
+        }
+      ],
+      "preview_pages": [
+        {
+          "pageNumber": 15,
+          "title": "The Mucus Barrier & Butyrate",
+          "caption": "How short-chain fatty acids nourish epithelial enterocytes to prevent leaky gut.",
+          "highlight": "70% of Colon Energy from Butyrate"
+        },
+        {
+          "pageNumber": 27,
+          "title": "Soluble vs Insoluble Comparison",
+          "caption": "Gel formation in the small intestine vs peristaltic propulsion in the colon.",
+          "highlight": "Viscous Gel vs Bulk Propulsion"
+        },
+        {
+          "pageNumber": 48,
+          "title": "The Bloat-Free Escalation Plan",
+          "caption": "Stepwise guide to increasing daily fiber from 15g to 35g over four weeks.",
+          "highlight": "5g Every 5 Days Titration"
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Why do high-fiber foods sometimes make me bloated?",
+          "answer": "When fiber-starved gut bacteria suddenly receive large amounts of prebiotic oligosaccharides, rapid fermentation creates gas. The guide provides a gentle titration strategy to prevent this completely."
+        },
+        {
+          "question": "How much fiber do I actually need?",
+          "answer": "The evolutionary ancestral estimate is 40-100g/day, while the modern Western average is only 15g. We help you target a realistic 30-38g/day."
+        }
+      ],
+      "created_at": "2026-09-03T10:00:00.000Z",
+      "updated_at": "2026-09-03T10:00:00.000Z"
+    },
+    {
+      "id": "BND-001",
+      "name": "Food & Body Starter Bundle",
+      "slug": "food-and-body-starter-bundle",
+      "subtitle": "The Complete 3-Guide Nutrition & Biology Master Collection",
+      "short_description": "Includes all 3 foundational guides: Egg Health, Sugar Metabolism, and Fiber & Gut Microbiome.",
+      "description": "The ultimate visual library for understanding human metabolism, gastrointestinal biology, and evidence-based nutrition. Includes The Complete Egg Health Guide, Sugar & Your Body, and The Complete Fiber Guide. Save 17% compared to purchasing individually.",
+      "price": 24.99,
+      "currency": "USD",
+      "type": "BUNDLE",
+      "status": "PUBLISHED",
+      "cover_image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&auto=format&fit=crop&q=80",
+      "file_reference": "private/storage/bundle-starter.zip",
+      "bundle_item_ids": [
+        "EGG-001",
+        "SUG-001",
+        "FIB-001"
+      ],
+      "pages": 156,
+      "format": "3 Complete Digital PDFs (Instant Download • DRM-Free)",
+      "benefits": [
+        "Access all 3 guides instantly with 1 single purchase and order",
+        "Over 150+ full-color visual diagrams, charts, and biochemical pathways",
+        "Saves $4.98 compared to buying guides separately",
+        "Covers lipids, energy metabolism, glucose, and gut microbiome in one library"
+      ],
+      "what_is_included": [
+        {
+          "chapter": "GUIDE 1",
+          "title": "The Complete Egg Health Guide (48 pages)",
+          "description": "Cholesterol synthesis, choline pathways, and cooking science.",
+          "pages": "p. 1-48"
+        },
+        {
+          "chapter": "GUIDE 2",
+          "title": "Sugar & Your Body (52 pages)",
+          "description": "Fructose metabolism, insulin spikes, cravings, and reset roadmap.",
+          "pages": "p. 1-52"
+        },
+        {
+          "chapter": "GUIDE 3",
+          "title": "The Complete Fiber Guide (56 pages)",
+          "description": "Microbiome diversity, SCFA butyrate, and titration schedule.",
+          "pages": "p. 1-56"
+        }
+      ],
+      "preview_pages": [
+        {
+          "pageNumber": 1,
+          "title": "Egg Lipids & Neurotransmitters",
+          "caption": "Part of The Complete Egg Health Guide visual suite.",
+          "highlight": "Included in Bundle"
+        },
+        {
+          "pageNumber": 2,
+          "title": "Glucose Waveform Analysis",
+          "caption": "Part of Sugar & Your Body metabolic breakdown.",
+          "highlight": "Included in Bundle"
+        },
+        {
+          "pageNumber": 3,
+          "title": "Microbiome Fermentation Map",
+          "caption": "Part of The Complete Fiber Guide gut barrier chapter.",
+          "highlight": "Included in Bundle"
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Do I get access to all 3 individual PDFs?",
+          "answer": "Yes! Upon checkout, your account receives download tokens for each of the 3 guides (Egg, Sugar, and Fiber). You can download them individually or all together."
+        },
+        {
+          "question": "Is this a recurring subscription or a one-time purchase?",
+          "answer": "It is a strictly one-time payment of $24.99 with lifetime access, free updates, and no recurring fees."
+        }
+      ],
+      "created_at": "2026-09-04T10:00:00.000Z",
+      "updated_at": "2026-09-04T10:00:00.000Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "usr_sample_1",
+      "name": "Sarah Jenkins",
+      "email": "sarah.j@example.com",
+      "created_at": "2026-09-08T20:43:18.948Z",
+      "updated_at": "2026-09-08T20:43:18.948Z"
+    },
+    {
+      "id": "usr_1789332209253_376985",
+      "name": "Dr. Test",
+      "email": "test@example.com",
+      "created_at": "2026-09-13T20:43:29.253Z",
+      "updated_at": "2026-09-13T20:43:29.253Z"
+    },
+    {
+      "id": "usr_1789332402302_e75be7",
+      "name": "bundlebuyer",
+      "email": "bundlebuyer@example.com",
+      "created_at": "2026-09-13T20:46:42.302Z",
+      "updated_at": "2026-09-13T20:46:42.302Z"
+    },
+    {
+      "id": "usr_1789465840998_86b038",
+      "name": "Victor Moses",
+      "email": "flutterwave_user@example.com",
+      "created_at": "2026-09-15T09:50:40.998Z",
+      "updated_at": "2026-09-15T09:50:40.998Z"
+    },
+    {
+      "id": "usr_1789466543456_169588",
+      "name": "victormoses911379",
+      "email": "victormoses911379@gmail.com",
+      "created_at": "2026-09-15T10:02:23.456Z",
+      "updated_at": "2026-09-15T10:02:23.456Z"
+    },
+    {
+      "id": "usr_1789466688447_58dcd5",
+      "name": "Live Tester",
+      "email": "testbuyer@flutterwave.com",
+      "created_at": "2026-09-15T10:04:48.447Z",
+      "updated_at": "2026-09-15T10:04:48.447Z"
+    },
+    {
+      "id": "usr_1789588730295_b0438c",
+      "name": "Jane Doe",
+      "email": "testuser@example.com",
+      "created_at": "2026-09-16T19:58:50.295Z",
+      "updated_at": "2026-09-16T19:58:50.295Z"
+    },
+    {
+      "id": "usr_1789589446076_1e2d44",
+      "name": "Naira Tester",
+      "email": "naira.tester@example.com",
+      "created_at": "2026-09-16T20:10:46.076Z",
+      "updated_at": "2026-09-16T20:10:46.076Z"
+    },
+    {
+      "id": "usr_1789589448551_fb9b44",
+      "name": "PayPal Tester",
+      "email": "paypal.tester@example.com",
+      "created_at": "2026-09-16T20:10:48.550Z",
+      "updated_at": "2026-09-16T20:10:48.550Z"
+    },
+    {
+      "id": "usr_1789589454187_d8f6ab",
+      "name": "Crypto Tester",
+      "email": "crypto.tester@example.com",
+      "created_at": "2026-09-16T20:10:54.187Z",
+      "updated_at": "2026-09-16T20:10:54.187Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord_1789589454187_2d1766",
+      "order_number": "ORD-202609-000010",
+      "user_id": "usr_1789589454187_d8f6ab",
+      "customer_name": "Crypto Tester",
+      "customer_email": "crypto.tester@example.com",
+      "total_amount": 9.99,
+      "currency": "USD",
+      "payment_provider": "Crypto",
+      "payment_reference": "0x4f82a991b17e4526d83b1234567890abcdef1234567890abcdef1234567890ab",
+      "payment_status": "APPROVED",
+      "additional_note": "Sent USDT via Tron TRC20",
+      "confirmation_confirmed": true,
+      "items": [
+        {
+          "id": "item_1789589454187_0",
+          "order_id": "ord_1789589454187_2d1766",
+          "product_id": "FIB-001",
+          "product_name": "The Complete Fiber Guide",
+          "unit_price": 9.99,
+          "quantity": 1,
+          "subtotal": 9.99
+        }
+      ],
+      "downloads": [
+        {
+          "id": "dl_1789589456860_1",
+          "order_id": "ord_1789589454187_2d1766",
+          "product_id": "FIB-001",
+          "product_name": "The Complete Fiber Guide",
+          "token": "tok_5eac2b7b50697afb82b564737871f3e8",
+          "expires_at": "2026-09-30T20:10:56.860Z",
+          "download_count": 1,
+          "max_downloads": 10,
+          "created_at": "2026-09-16T20:10:56.860Z"
+        }
+      ],
+      "created_at": "2026-09-16T20:10:54.187Z",
+      "updated_at": "2026-09-16T20:10:56.860Z",
+      "reviewed_at": "2026-09-16T20:10:56.860Z",
+      "reviewed_by": "Victor Moses"
+    },
+    {
+      "id": "ord_1789589448550_313dfb",
+      "order_number": "ORD-202609-000009",
+      "user_id": "usr_1789589448551_fb9b44",
+      "customer_name": "PayPal Tester",
+      "customer_email": "paypal.tester@example.com",
+      "total_amount": 9.99,
+      "currency": "USD",
+      "payment_provider": "PayPal",
+      "payment_reference": "PP-TX-77889900",
+      "payment_status": "PENDING",
+      "confirmation_confirmed": true,
+      "items": [
+        {
+          "id": "item_1789589448551_0",
+          "order_id": "ord_1789589448550_313dfb",
+          "product_id": "SUG-001",
+          "product_name": "Sugar & Your Body",
+          "unit_price": 9.99,
+          "quantity": 1,
+          "subtotal": 9.99
+        }
+      ],
+      "downloads": [],
+      "created_at": "2026-09-16T20:10:48.550Z",
+      "updated_at": "2026-09-16T20:10:48.550Z"
+    },
+    {
+      "id": "ord_1789589446076_3107e1",
+      "order_number": "ORD-202609-000008",
+      "user_id": "usr_1789589446076_1e2d44",
+      "customer_name": "Naira Tester",
+      "customer_email": "naira.tester@example.com",
+      "total_amount": 14985,
+      "currency": "NGN",
+      "payment_provider": "Nigerian Naira (₦)",
+      "payment_reference": "NGN-REF-998811",
+      "payment_status": "PENDING",
+      "additional_note": "Paid from GTBank mobile app",
+      "confirmation_confirmed": true,
+      "items": [
+        {
+          "id": "item_1789589446076_0",
+          "order_id": "ord_1789589446076_3107e1",
+          "product_id": "EGG-001",
+          "product_name": "The Complete Egg Health Guide",
+          "unit_price": 9.99,
+          "quantity": 1,
+          "subtotal": 9.99
+        }
+      ],
+      "downloads": [],
+      "created_at": "2026-09-16T20:10:46.076Z",
+      "updated_at": "2026-09-16T20:10:46.076Z"
+    },
+    {
+      "id": "ord_1789588730295_905760",
+      "order_number": "ORD-202609-000007",
+      "user_id": "usr_1789588730295_b0438c",
+      "customer_name": "Jane Doe",
+      "customer_email": "testuser@example.com",
+      "total_amount": 9.99,
+      "currency": "USD",
+      "payment_provider": "Direct Bank Transfer / Wire",
+      "payment_reference": "TX-123456789",
+      "payment_status": "APPROVED",
+      "confirmation_confirmed": true,
+      "items": [
+        {
+          "id": "item_1789588730295_0",
+          "order_id": "ord_1789588730295_905760",
+          "product_id": "EGG-001",
+          "product_name": "The Complete Egg Health Guide",
+          "unit_price": 9.99,
+          "quantity": 1,
+          "subtotal": 9.99
+        }
+      ],
+      "downloads": [
+        {
+          "id": "dl_1789588736097_1",
+          "order_id": "ord_1789588730295_905760",
+          "product_id": "EGG-001",
+          "product_name": "The Complete Egg Health Guide",
+          "token": "tok_d6d502d800c64447407510ba2f862f0d",
+          "expires_at": "2026-09-30T19:58:56.097Z",
+          "download_count": 1,
+          "max_downloads": 10,
+          "created_at": "2026-09-16T19:58:56.096Z"
+        }
+      ],
+      "created_at": "2026-09-16T19:58:50.295Z",
+      "updated_at": "2026-09-16T19:58:56.096Z",
+      "reviewed_at": "2026-09-16T19:58:56.096Z",
+      "reviewed_by": "Store Admin"
+    },
+    {
+      "id": "ord_1789332209253_a48df5",
+      "order_number": "ORD-20261001-000001",
+      "user_id": "usr_1789332209253_376985",
+      "customer_name": "Dr. Test",
+      "customer_email": "test@example.com",
+      "total_amount": 9.99,
+      "currency": "USD",
+      "payment_provider": "FoodBodyPay",
+      "payment_reference": "pay_ref_1789332207491_2b989db59c32",
+      "payment_status": "REFUNDED",
+      "items": [
+        {
+          "id": "item_1789332209253_0",
+          "order_id": "ord_1789332209253_a48df5",
+          "product_id": "EGG-001",
+          "product_name": "The Complete Egg Health Guide",
+          "unit_price": 9.99,
+          "quantity": 1,
+          "subtotal": 9.99
+        }
+      ],
+      "downloads": [
+        {
+          "id": "dl_1789332209253_1",
+          "order_id": "ord_1789332209253_a48df5",
+          "product_id": "EGG-001",
+          "product_name": "The Complete Egg Health Guide",
+          "token": "tok_e1e38deff706636ea17b25841f3d9467",
+          "expires_at": "2026-09-20T20:43:29.253Z",
+          "download_count": 1,
+          "max_downloads": 5,
+          "created_at": "2026-09-13T20:43:29.253Z",
+          "revoked": true
+        }
+      ],
+      "created_at": "2026-09-13T20:43:29.253Z",
+      "updated_at": "2026-09-13T20:43:37.627Z"
+    },
+    {
+      "id": "ord_1789332402302_72ff6e",
+      "order_number": "ORD-20261001-000002",
+      "user_id": "usr_1789332402302_e75be7",
+      "customer_name": "bundlebuyer",
+      "customer_email": "bundlebuyer@example.com",
+      "total_amount": 24.99,
+      "currency": "USD",
+      "payment_provider": "FoodBodyPay",
+      "payment_reference": "pay_ref_1789332400591_42a237c2f11f",
+      "payment_status": "PAID",
+      "items": [
+        {
+          "id": "item_1789332402303_0",
+          "order_id": "ord_1789332402302_72ff6e",
+          "product_id": "BND-001",
+          "product_name": "Food & Body Starter Bundle",
+          "unit_price": 24.99,
+          "quantity": 1,
+          "subtotal": 24.99
+        }
+      ],
+      "downloads": [
+        {
+          "id": "dl_1789332402303_1",
+          "order_id": "ord_1789332402302_72ff6e",
+          "product_id": "EGG-001",
+          "product_name": "The Complete Egg Health Guide",
+          "token": "tok_1f3f10343d6b4ab9ae0fbdee883b3c20",
+          "expires_at": "2026-09-20T20:46:42.303Z",
+          "download_count": 1,
+          "max_downloads": 5,
+          "created_at": "2026-09-13T20:46:42.302Z"
+        },
+        {
+          "id": "dl_1789332402303_2",
+          "order_id": "ord_1789332402302_72ff6e",
+          "product_id": "SUG-001",
+          "product_name": "Sugar & Your Body",
+          "token": "tok_6161fe549e36293ce6128af2d0111177",
+          "expires_at": "2026-09-20T20:46:42.303Z",
+          "download_count": 0,
+          "max_downloads": 5,
+          "created_at": "2026-09-13T20:46:42.302Z"
+        },
+        {
+          "id": "dl_1789332402303_3",
+          "order_id": "ord_1789332402302_72ff6e",
+          "product_id": "FIB-001",
+          "product_name": "The Complete Fiber Guide",
+          "token": "tok_8ff4073a8277e46539e738db5d0ebe78",
+          "expires_at": "2026-09-20T20:46:42.303Z",
+          "download_count": 0,
+          "max_downloads": 5,
+          "created_at": "2026-09-13T20:46:42.302Z"
+        }
+      ],
+      "created_at": "2026-09-13T20:46:42.302Z",
+      "updated_at": "2026-09-13T20:46:42.302Z"
+    },
+    {
+      "id": "ord_1789465840998_7846b6",
+      "order_number": "ORD-20261001-000003",
+      "user_id": "usr_1789465840998_86b038",
+      "customer_name": "Victor Moses",
+      "customer_email": "flutterwave_user@example.com",
+      "total_amount": 9.99,
+      "currency": "USD",
+      "payment_provider": "FoodBodyPay",
+      "payment_reference": "flw_tx_test_99812",
+      "payment_status": "PAID",
+      "items": [
+        {
+          "id": "item_1789465840998_0",
+          "order_id": "ord_1789465840998_7846b6",
+          "product_id": "EGG-001",
+          "product_name": "The Complete Egg Health Guide",
+          "unit_price": 9.99,
+          "quantity": 1,
+          "subtotal": 9.99
+        }
+      ],
+      "downloads": [
+        {
+          "id": "dl_1789465840998_1",
+          "order_id": "ord_1789465840998_7846b6",
+          "product_id": "EGG-001",
+          "product_name": "The Complete Egg Health Guide",
+          "token": "tok_4c060744bcfbca61113d72237b1e21f1",
+          "expires_at": "2026-09-22T09:50:40.998Z",
+          "download_count": 0,
+          "max_downloads": 5,
+          "created_at": "2026-09-15T09:50:40.998Z"
+        }
+      ],
+      "created_at": "2026-09-15T09:50:40.998Z",
+      "updated_at": "2026-09-15T09:50:40.998Z"
+    },
+    {
+      "id": "ord_1789466543456_8de30e",
+      "order_number": "ORD-20261001-000004",
+      "user_id": "usr_1789466543456_169588",
+      "customer_name": "victormoses911379",
+      "customer_email": "victormoses911379@gmail.com",
+      "total_amount": 24.99,
+      "currency": "USD",
+      "payment_provider": "FoodBodyPay",
+      "payment_reference": "pay_ref_1789466543240_9d829fd6d433",
+      "payment_status": "PAID",
+      "items": [
+        {
+          "id": "item_1789466543456_0",
+          "order_id": "ord_1789466543456_8de30e",
+          "product_id": "BND-001",
+          "product_name": "Food & Body Starter Bundle",
+          "unit_price": 24.99,
+          "quantity": 1,
+          "subtotal": 24.99
+        }
+      ],
+      "downloads": [
+        {
+          "id": "dl_1789466543457_1",
+          "order_id": "ord_1789466543456_8de30e",
+          "product_id": "EGG-001",
+          "product_name": "The Complete Egg Health Guide",
+          "token": "tok_1f24b49ca05f61b9f7860d889792bf7e",
+          "expires_at": "2026-09-22T10:02:23.457Z",
+          "download_count": 0,
+          "max_downloads": 5,
+          "created_at": "2026-09-15T10:02:23.456Z"
+        },
+        {
+          "id": "dl_1789466543457_2",
+          "order_id": "ord_1789466543456_8de30e",
+          "product_id": "SUG-001",
+          "product_name": "Sugar & Your Body",
+          "token": "tok_92c09cee0fe2b652bc44adc2e61dc547",
+          "expires_at": "2026-09-22T10:02:23.457Z",
+          "download_count": 0,
+          "max_downloads": 5,
+          "created_at": "2026-09-15T10:02:23.456Z"
+        },
+        {
+          "id": "dl_1789466543457_3",
+          "order_id": "ord_1789466543456_8de30e",
+          "product_id": "FIB-001",
+          "product_name": "The Complete Fiber Guide",
+          "token": "tok_78798780d5f750190166d1cedc43c17a",
+          "expires_at": "2026-09-22T10:02:23.457Z",
+          "download_count": 0,
+          "max_downloads": 5,
+          "created_at": "2026-09-15T10:02:23.456Z"
+        }
+      ],
+      "created_at": "2026-09-15T10:02:23.456Z",
+      "updated_at": "2026-09-15T10:02:23.456Z"
+    },
+    {
+      "id": "ord_1789466688447_48dbe1",
+      "order_number": "ORD-20261001-000005",
+      "user_id": "usr_1789466688447_58dcd5",
+      "customer_name": "Live Tester",
+      "customer_email": "testbuyer@flutterwave.com",
+      "total_amount": 24.99,
+      "currency": "USD",
+      "payment_provider": "FoodBodyPay",
+      "payment_reference": "flw_test_instant_verification",
+      "payment_status": "PAID",
+      "items": [
+        {
+          "id": "item_1789466688447_0",
+          "order_id": "ord_1789466688447_48dbe1",
+          "product_id": "BND-001",
+          "product_name": "Food & Body Starter Bundle",
+          "unit_price": 24.99,
+          "quantity": 1,
+          "subtotal": 24.99
+        }
+      ],
+      "downloads": [
+        {
+          "id": "dl_1789466688447_1",
+          "order_id": "ord_1789466688447_48dbe1",
+          "product_id": "EGG-001",
+          "product_name": "The Complete Egg Health Guide",
+          "token": "tok_1698b86677bceb65bee5e3ac1dcbcd3a",
+          "expires_at": "2026-09-22T10:04:48.447Z",
+          "download_count": 0,
+          "max_downloads": 5,
+          "created_at": "2026-09-15T10:04:48.447Z"
+        },
+        {
+          "id": "dl_1789466688447_2",
+          "order_id": "ord_1789466688447_48dbe1",
+          "product_id": "SUG-001",
+          "product_name": "Sugar & Your Body",
+          "token": "tok_dc92a3a7992d9e6f6540c51dc90b04d1",
+          "expires_at": "2026-09-22T10:04:48.447Z",
+          "download_count": 0,
+          "max_downloads": 5,
+          "created_at": "2026-09-15T10:04:48.447Z"
+        },
+        {
+          "id": "dl_1789466688448_3",
+          "order_id": "ord_1789466688447_48dbe1",
+          "product_id": "FIB-001",
+          "product_name": "The Complete Fiber Guide",
+          "token": "tok_da149810feff7766c6c966da2801e792",
+          "expires_at": "2026-09-22T10:04:48.448Z",
+          "download_count": 0,
+          "max_downloads": 5,
+          "created_at": "2026-09-15T10:04:48.447Z"
+        }
+      ],
+      "created_at": "2026-09-15T10:04:48.447Z",
+      "updated_at": "2026-09-15T10:04:48.447Z"
+    },
+    {
+      "id": "ord_1789588288042_7003b1",
+      "order_number": "ORD-20261001-000006",
+      "user_id": "usr_1789466543456_169588",
+      "customer_name": "victormoses911379",
+      "customer_email": "victormoses911379@gmail.com",
+      "total_amount": 9.99,
+      "currency": "USD",
+      "payment_provider": "FoodBodyPay",
+      "payment_reference": "pay_ref_1789588287863_af1117419528",
+      "payment_status": "PAID",
+      "items": [
+        {
+          "id": "item_1789588288042_0",
+          "order_id": "ord_1789588288042_7003b1",
+          "product_id": "EGG-001",
+          "product_name": "The Complete Egg Health Guide",
+          "unit_price": 9.99,
+          "quantity": 1,
+          "subtotal": 9.99
+        }
+      ],
+      "downloads": [
+        {
+          "id": "dl_1789588288042_1",
+          "order_id": "ord_1789588288042_7003b1",
+          "product_id": "EGG-001",
+          "product_name": "The Complete Egg Health Guide",
+          "token": "tok_42046cbf7f6a940190522e0651fd6d2a",
+          "expires_at": "2026-09-23T19:51:28.042Z",
+          "download_count": 0,
+          "max_downloads": 5,
+          "created_at": "2026-09-16T19:51:28.042Z"
+        }
+      ],
+      "created_at": "2026-09-16T19:51:28.042Z",
+      "updated_at": "2026-09-16T19:51:28.042Z"
+    }
+  ],
+  "order_items": [
+    {
+      "id": "item_1789332209253_0",
+      "order_id": "ord_1789332209253_a48df5",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "unit_price": 9.99,
+      "quantity": 1,
+      "subtotal": 9.99
+    },
+    {
+      "id": "item_1789332402303_0",
+      "order_id": "ord_1789332402302_72ff6e",
+      "product_id": "BND-001",
+      "product_name": "Food & Body Starter Bundle",
+      "unit_price": 24.99,
+      "quantity": 1,
+      "subtotal": 24.99
+    },
+    {
+      "id": "item_1789465840998_0",
+      "order_id": "ord_1789465840998_7846b6",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "unit_price": 9.99,
+      "quantity": 1,
+      "subtotal": 9.99
+    },
+    {
+      "id": "item_1789466543456_0",
+      "order_id": "ord_1789466543456_8de30e",
+      "product_id": "BND-001",
+      "product_name": "Food & Body Starter Bundle",
+      "unit_price": 24.99,
+      "quantity": 1,
+      "subtotal": 24.99
+    },
+    {
+      "id": "item_1789466688447_0",
+      "order_id": "ord_1789466688447_48dbe1",
+      "product_id": "BND-001",
+      "product_name": "Food & Body Starter Bundle",
+      "unit_price": 24.99,
+      "quantity": 1,
+      "subtotal": 24.99
+    },
+    {
+      "id": "item_1789588288042_0",
+      "order_id": "ord_1789588288042_7003b1",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "unit_price": 9.99,
+      "quantity": 1,
+      "subtotal": 9.99
+    },
+    {
+      "id": "item_1789588730295_0",
+      "order_id": "ord_1789588730295_905760",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "unit_price": 9.99,
+      "quantity": 1,
+      "subtotal": 9.99
+    },
+    {
+      "id": "item_1789589446076_0",
+      "order_id": "ord_1789589446076_3107e1",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "unit_price": 9.99,
+      "quantity": 1,
+      "subtotal": 9.99
+    },
+    {
+      "id": "item_1789589448551_0",
+      "order_id": "ord_1789589448550_313dfb",
+      "product_id": "SUG-001",
+      "product_name": "Sugar & Your Body",
+      "unit_price": 9.99,
+      "quantity": 1,
+      "subtotal": 9.99
+    },
+    {
+      "id": "item_1789589454187_0",
+      "order_id": "ord_1789589454187_2d1766",
+      "product_id": "FIB-001",
+      "product_name": "The Complete Fiber Guide",
+      "unit_price": 9.99,
+      "quantity": 1,
+      "subtotal": 9.99
+    }
+  ],
+  "downloads": [
+    {
+      "id": "dl_1789332209253_1",
+      "order_id": "ord_1789332209253_a48df5",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "token": "tok_e1e38deff706636ea17b25841f3d9467",
+      "expires_at": "2026-09-20T20:43:29.253Z",
+      "download_count": 1,
+      "max_downloads": 5,
+      "created_at": "2026-09-13T20:43:29.253Z",
+      "revoked": true
+    },
+    {
+      "id": "dl_1789332402303_1",
+      "order_id": "ord_1789332402302_72ff6e",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "token": "tok_1f3f10343d6b4ab9ae0fbdee883b3c20",
+      "expires_at": "2026-09-20T20:46:42.303Z",
+      "download_count": 1,
+      "max_downloads": 5,
+      "created_at": "2026-09-13T20:46:42.302Z"
+    },
+    {
+      "id": "dl_1789332402303_2",
+      "order_id": "ord_1789332402302_72ff6e",
+      "product_id": "SUG-001",
+      "product_name": "Sugar & Your Body",
+      "token": "tok_6161fe549e36293ce6128af2d0111177",
+      "expires_at": "2026-09-20T20:46:42.303Z",
+      "download_count": 0,
+      "max_downloads": 5,
+      "created_at": "2026-09-13T20:46:42.302Z"
+    },
+    {
+      "id": "dl_1789332402303_3",
+      "order_id": "ord_1789332402302_72ff6e",
+      "product_id": "FIB-001",
+      "product_name": "The Complete Fiber Guide",
+      "token": "tok_8ff4073a8277e46539e738db5d0ebe78",
+      "expires_at": "2026-09-20T20:46:42.303Z",
+      "download_count": 0,
+      "max_downloads": 5,
+      "created_at": "2026-09-13T20:46:42.302Z"
+    },
+    {
+      "id": "dl_1789465840998_1",
+      "order_id": "ord_1789465840998_7846b6",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "token": "tok_4c060744bcfbca61113d72237b1e21f1",
+      "expires_at": "2026-09-22T09:50:40.998Z",
+      "download_count": 0,
+      "max_downloads": 5,
+      "created_at": "2026-09-15T09:50:40.998Z"
+    },
+    {
+      "id": "dl_1789466543457_1",
+      "order_id": "ord_1789466543456_8de30e",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "token": "tok_1f24b49ca05f61b9f7860d889792bf7e",
+      "expires_at": "2026-09-22T10:02:23.457Z",
+      "download_count": 0,
+      "max_downloads": 5,
+      "created_at": "2026-09-15T10:02:23.456Z"
+    },
+    {
+      "id": "dl_1789466543457_2",
+      "order_id": "ord_1789466543456_8de30e",
+      "product_id": "SUG-001",
+      "product_name": "Sugar & Your Body",
+      "token": "tok_92c09cee0fe2b652bc44adc2e61dc547",
+      "expires_at": "2026-09-22T10:02:23.457Z",
+      "download_count": 0,
+      "max_downloads": 5,
+      "created_at": "2026-09-15T10:02:23.456Z"
+    },
+    {
+      "id": "dl_1789466543457_3",
+      "order_id": "ord_1789466543456_8de30e",
+      "product_id": "FIB-001",
+      "product_name": "The Complete Fiber Guide",
+      "token": "tok_78798780d5f750190166d1cedc43c17a",
+      "expires_at": "2026-09-22T10:02:23.457Z",
+      "download_count": 0,
+      "max_downloads": 5,
+      "created_at": "2026-09-15T10:02:23.456Z"
+    },
+    {
+      "id": "dl_1789466688447_1",
+      "order_id": "ord_1789466688447_48dbe1",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "token": "tok_1698b86677bceb65bee5e3ac1dcbcd3a",
+      "expires_at": "2026-09-22T10:04:48.447Z",
+      "download_count": 0,
+      "max_downloads": 5,
+      "created_at": "2026-09-15T10:04:48.447Z"
+    },
+    {
+      "id": "dl_1789466688447_2",
+      "order_id": "ord_1789466688447_48dbe1",
+      "product_id": "SUG-001",
+      "product_name": "Sugar & Your Body",
+      "token": "tok_dc92a3a7992d9e6f6540c51dc90b04d1",
+      "expires_at": "2026-09-22T10:04:48.447Z",
+      "download_count": 0,
+      "max_downloads": 5,
+      "created_at": "2026-09-15T10:04:48.447Z"
+    },
+    {
+      "id": "dl_1789466688448_3",
+      "order_id": "ord_1789466688447_48dbe1",
+      "product_id": "FIB-001",
+      "product_name": "The Complete Fiber Guide",
+      "token": "tok_da149810feff7766c6c966da2801e792",
+      "expires_at": "2026-09-22T10:04:48.448Z",
+      "download_count": 0,
+      "max_downloads": 5,
+      "created_at": "2026-09-15T10:04:48.447Z"
+    },
+    {
+      "id": "dl_1789588288042_1",
+      "order_id": "ord_1789588288042_7003b1",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "token": "tok_42046cbf7f6a940190522e0651fd6d2a",
+      "expires_at": "2026-09-23T19:51:28.042Z",
+      "download_count": 0,
+      "max_downloads": 5,
+      "created_at": "2026-09-16T19:51:28.042Z"
+    },
+    {
+      "id": "dl_1789588736097_1",
+      "order_id": "ord_1789588730295_905760",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "token": "tok_d6d502d800c64447407510ba2f862f0d",
+      "expires_at": "2026-09-30T19:58:56.097Z",
+      "download_count": 1,
+      "max_downloads": 10,
+      "created_at": "2026-09-16T19:58:56.096Z"
+    },
+    {
+      "id": "dl_1789589456860_1",
+      "order_id": "ord_1789589454187_2d1766",
+      "product_id": "FIB-001",
+      "product_name": "The Complete Fiber Guide",
+      "token": "tok_5eac2b7b50697afb82b564737871f3e8",
+      "expires_at": "2026-09-30T20:10:56.860Z",
+      "download_count": 1,
+      "max_downloads": 10,
+      "created_at": "2026-09-16T20:10:56.860Z"
+    }
+  ],
+  "emails": [
+    {
+      "id": "em_1789589456861_approved",
+      "recipient_email": "crypto.tester@example.com",
+      "recipient_name": "Crypto Tester",
+      "subject": "Payment Confirmed! Your PDF is Ready: The Complete Fiber Guide (ORD-202609-000010)",
+      "type": "PRODUCT_DELIVERY",
+      "order_number": "ORD-202609-000010",
+      "product_name": "The Complete Fiber Guide",
+      "body_text": "Payment confirmed! Your PDF is now available to download.\n\nYour manual payment for order ORD-202609-000010 has been verified and approved by our team.\n\nYou can click the secure link below to download your visual guide, or view it directly in the 'My Purchases' section.",
+      "download_urls": [
+        {
+          "productName": "The Complete Fiber Guide",
+          "url": "/api/download/tok_5eac2b7b50697afb82b564737871f3e8",
+          "token": "tok_5eac2b7b50697afb82b564737871f3e8"
+        }
+      ],
+      "sent_at": "2026-09-16T20:10:56.860Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789589454187_pending",
+      "recipient_email": "crypto.tester@example.com",
+      "recipient_name": "Crypto Tester",
+      "subject": "Payment Received — Awaiting Verification (ORD-202609-000010)",
+      "type": "PURCHASE_CONFIRMATION",
+      "order_number": "ORD-202609-000010",
+      "product_name": "The Complete Fiber Guide",
+      "body_text": "Your payment has been submitted and is awaiting confirmation.\n\nOrder: ORD-202609-000010\nProduct: The Complete Fiber Guide\nPayment Method: Crypto\nAmount: $9.99 USD\nTransaction Reference: 0x4f82a991b17e4526d83b1234567890abcdef1234567890abcdef1234567890ab\n\nOur team is currently reviewing your payment details. You will receive access to your PDF once the payment has been confirmed. You can also view your status anytime under \"My Purchases\" on our website.",
+      "download_urls": [],
+      "sent_at": "2026-09-16T20:10:54.187Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789589448551_pending",
+      "recipient_email": "paypal.tester@example.com",
+      "recipient_name": "PayPal Tester",
+      "subject": "Payment Received — Awaiting Verification (ORD-202609-000009)",
+      "type": "PURCHASE_CONFIRMATION",
+      "order_number": "ORD-202609-000009",
+      "product_name": "Sugar & Your Body",
+      "body_text": "Your payment has been submitted and is awaiting confirmation.\n\nOrder: ORD-202609-000009\nProduct: Sugar & Your Body\nPayment Method: PayPal\nAmount: $9.99 USD\nTransaction Reference: PP-TX-77889900\n\nOur team is currently reviewing your payment details. You will receive access to your PDF once the payment has been confirmed. You can also view your status anytime under \"My Purchases\" on our website.",
+      "download_urls": [],
+      "sent_at": "2026-09-16T20:10:48.550Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789589446077_pending",
+      "recipient_email": "naira.tester@example.com",
+      "recipient_name": "Naira Tester",
+      "subject": "Payment Received — Awaiting Verification (ORD-202609-000008)",
+      "type": "PURCHASE_CONFIRMATION",
+      "order_number": "ORD-202609-000008",
+      "product_name": "The Complete Egg Health Guide",
+      "body_text": "Your payment has been submitted and is awaiting confirmation.\n\nOrder: ORD-202609-000008\nProduct: The Complete Egg Health Guide\nPayment Method: Nigerian Naira (₦)\nAmount: ₦14,985 NGN\nTransaction Reference: NGN-REF-998811\n\nOur team is currently reviewing your payment details. You will receive access to your PDF once the payment has been confirmed. You can also view your status anytime under \"My Purchases\" on our website.",
+      "download_urls": [],
+      "sent_at": "2026-09-16T20:10:46.076Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789588736097_approved",
+      "recipient_email": "testuser@example.com",
+      "recipient_name": "Jane Doe",
+      "subject": "Payment Confirmed! Your PDF is Ready: The Complete Egg Health Guide (ORD-202609-000007)",
+      "type": "PRODUCT_DELIVERY",
+      "order_number": "ORD-202609-000007",
+      "product_name": "The Complete Egg Health Guide",
+      "body_text": "Payment confirmed! Your PDF is now available to download.\n\nYour manual payment for order ORD-202609-000007 has been verified and approved by our team.\n\nYou can click the secure link below to download your visual guide, or view it directly in the 'My Purchases' section.",
+      "download_urls": [
+        {
+          "productName": "The Complete Egg Health Guide",
+          "url": "/api/download/tok_d6d502d800c64447407510ba2f862f0d",
+          "token": "tok_d6d502d800c64447407510ba2f862f0d"
+        }
+      ],
+      "sent_at": "2026-09-16T19:58:56.096Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789588730295_pending",
+      "recipient_email": "testuser@example.com",
+      "recipient_name": "Jane Doe",
+      "subject": "Payment Received — Awaiting Verification (ORD-202609-000007)",
+      "type": "PURCHASE_CONFIRMATION",
+      "order_number": "ORD-202609-000007",
+      "product_name": "The Complete Egg Health Guide",
+      "body_text": "Your payment has been submitted and is awaiting confirmation.\n\nOrder: ORD-202609-000007\nProduct: The Complete Egg Health Guide\nAmount: $9.99 USD\nTransaction Reference: TX-123456789\n\nOur team is currently reviewing your payment details. You will receive access to your PDF once the payment has been confirmed. You can also view your status anytime under \"My Purchases\" on our website.",
+      "download_urls": [],
+      "sent_at": "2026-09-16T19:58:50.295Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789588288042_1",
+      "recipient_email": "victormoses911379@gmail.com",
+      "recipient_name": "victormoses911379",
+      "subject": "Order Confirmation: The Complete Egg Health Guide (ORD-20261001-000006)",
+      "type": "PURCHASE_CONFIRMATION",
+      "order_number": "ORD-20261001-000006",
+      "product_name": "The Complete Egg Health Guide",
+      "body_text": "Thank you for purchasing The Complete Egg Health Guide! Your order ORD-20261001-000006 for $9.99 USD has been confirmed. Your digital PDF guide(s) are ready for immediate download.",
+      "download_urls": [
+        {
+          "productName": "The Complete Egg Health Guide",
+          "url": "/api/download/tok_42046cbf7f6a940190522e0651fd6d2a",
+          "token": "tok_42046cbf7f6a940190522e0651fd6d2a"
+        }
+      ],
+      "sent_at": "2026-09-16T19:51:28.042Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789588288042_2",
+      "recipient_email": "victormoses911379@gmail.com",
+      "recipient_name": "victormoses911379",
+      "subject": "Your Guide is Ready: The Complete Egg Health Guide — Download Access Inside",
+      "type": "PRODUCT_DELIVERY",
+      "order_number": "ORD-20261001-000006",
+      "product_name": "The Complete Egg Health Guide",
+      "body_text": "Your digital publication is ready. Click the secure access links below to download your visual guide. Note: download links are valid for 7 days and include up to 5 downloads per item.",
+      "download_urls": [
+        {
+          "productName": "The Complete Egg Health Guide",
+          "url": "/api/download/tok_42046cbf7f6a940190522e0651fd6d2a",
+          "token": "tok_42046cbf7f6a940190522e0651fd6d2a"
+        }
+      ],
+      "sent_at": "2026-09-16T19:51:28.042Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789466688448_1",
+      "recipient_email": "testbuyer@flutterwave.com",
+      "recipient_name": "Live Tester",
+      "subject": "Order Confirmation: Food & Body Starter Bundle (ORD-20261001-000005)",
+      "type": "PURCHASE_CONFIRMATION",
+      "order_number": "ORD-20261001-000005",
+      "product_name": "Food & Body Starter Bundle",
+      "body_text": "Thank you for purchasing Food & Body Starter Bundle! Your order ORD-20261001-000005 for $24.99 USD has been confirmed. Your digital PDF guide(s) are ready for immediate download.",
+      "download_urls": [
+        {
+          "productName": "The Complete Egg Health Guide",
+          "url": "/api/download/tok_1698b86677bceb65bee5e3ac1dcbcd3a",
+          "token": "tok_1698b86677bceb65bee5e3ac1dcbcd3a"
+        },
+        {
+          "productName": "Sugar & Your Body",
+          "url": "/api/download/tok_dc92a3a7992d9e6f6540c51dc90b04d1",
+          "token": "tok_dc92a3a7992d9e6f6540c51dc90b04d1"
+        },
+        {
+          "productName": "The Complete Fiber Guide",
+          "url": "/api/download/tok_da149810feff7766c6c966da2801e792",
+          "token": "tok_da149810feff7766c6c966da2801e792"
+        }
+      ],
+      "sent_at": "2026-09-15T10:04:48.448Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789466688448_2",
+      "recipient_email": "testbuyer@flutterwave.com",
+      "recipient_name": "Live Tester",
+      "subject": "Your Guide is Ready: Food & Body Starter Bundle — Download Access Inside",
+      "type": "PRODUCT_DELIVERY",
+      "order_number": "ORD-20261001-000005",
+      "product_name": "Food & Body Starter Bundle",
+      "body_text": "Your digital publication is ready. Click the secure access links below to download your visual guide. Note: download links are valid for 7 days and include up to 5 downloads per item.",
+      "download_urls": [
+        {
+          "productName": "The Complete Egg Health Guide",
+          "url": "/api/download/tok_1698b86677bceb65bee5e3ac1dcbcd3a",
+          "token": "tok_1698b86677bceb65bee5e3ac1dcbcd3a"
+        },
+        {
+          "productName": "Sugar & Your Body",
+          "url": "/api/download/tok_dc92a3a7992d9e6f6540c51dc90b04d1",
+          "token": "tok_dc92a3a7992d9e6f6540c51dc90b04d1"
+        },
+        {
+          "productName": "The Complete Fiber Guide",
+          "url": "/api/download/tok_da149810feff7766c6c966da2801e792",
+          "token": "tok_da149810feff7766c6c966da2801e792"
+        }
+      ],
+      "sent_at": "2026-09-15T10:04:48.448Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789466543457_1",
+      "recipient_email": "victormoses911379@gmail.com",
+      "recipient_name": "victormoses911379",
+      "subject": "Order Confirmation: Food & Body Starter Bundle (ORD-20261001-000004)",
+      "type": "PURCHASE_CONFIRMATION",
+      "order_number": "ORD-20261001-000004",
+      "product_name": "Food & Body Starter Bundle",
+      "body_text": "Thank you for purchasing Food & Body Starter Bundle! Your order ORD-20261001-000004 for $24.99 USD has been confirmed. Your digital PDF guide(s) are ready for immediate download.",
+      "download_urls": [
+        {
+          "productName": "The Complete Egg Health Guide",
+          "url": "/api/download/tok_1f24b49ca05f61b9f7860d889792bf7e",
+          "token": "tok_1f24b49ca05f61b9f7860d889792bf7e"
+        },
+        {
+          "productName": "Sugar & Your Body",
+          "url": "/api/download/tok_92c09cee0fe2b652bc44adc2e61dc547",
+          "token": "tok_92c09cee0fe2b652bc44adc2e61dc547"
+        },
+        {
+          "productName": "The Complete Fiber Guide",
+          "url": "/api/download/tok_78798780d5f750190166d1cedc43c17a",
+          "token": "tok_78798780d5f750190166d1cedc43c17a"
+        }
+      ],
+      "sent_at": "2026-09-15T10:02:23.457Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789466543457_2",
+      "recipient_email": "victormoses911379@gmail.com",
+      "recipient_name": "victormoses911379",
+      "subject": "Your Guide is Ready: Food & Body Starter Bundle — Download Access Inside",
+      "type": "PRODUCT_DELIVERY",
+      "order_number": "ORD-20261001-000004",
+      "product_name": "Food & Body Starter Bundle",
+      "body_text": "Your digital publication is ready. Click the secure access links below to download your visual guide. Note: download links are valid for 7 days and include up to 5 downloads per item.",
+      "download_urls": [
+        {
+          "productName": "The Complete Egg Health Guide",
+          "url": "/api/download/tok_1f24b49ca05f61b9f7860d889792bf7e",
+          "token": "tok_1f24b49ca05f61b9f7860d889792bf7e"
+        },
+        {
+          "productName": "Sugar & Your Body",
+          "url": "/api/download/tok_92c09cee0fe2b652bc44adc2e61dc547",
+          "token": "tok_92c09cee0fe2b652bc44adc2e61dc547"
+        },
+        {
+          "productName": "The Complete Fiber Guide",
+          "url": "/api/download/tok_78798780d5f750190166d1cedc43c17a",
+          "token": "tok_78798780d5f750190166d1cedc43c17a"
+        }
+      ],
+      "sent_at": "2026-09-15T10:02:23.457Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789465840998_1",
+      "recipient_email": "flutterwave_user@example.com",
+      "recipient_name": "Victor Moses",
+      "subject": "Order Confirmation: The Complete Egg Health Guide (ORD-20261001-000003)",
+      "type": "PURCHASE_CONFIRMATION",
+      "order_number": "ORD-20261001-000003",
+      "product_name": "The Complete Egg Health Guide",
+      "body_text": "Thank you for purchasing The Complete Egg Health Guide! Your order ORD-20261001-000003 for $9.99 USD has been confirmed. Your digital PDF guide(s) are ready for immediate download.",
+      "download_urls": [
+        {
+          "productName": "The Complete Egg Health Guide",
+          "url": "/api/download/tok_4c060744bcfbca61113d72237b1e21f1",
+          "token": "tok_4c060744bcfbca61113d72237b1e21f1"
+        }
+      ],
+      "sent_at": "2026-09-15T09:50:40.998Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789465840998_2",
+      "recipient_email": "flutterwave_user@example.com",
+      "recipient_name": "Victor Moses",
+      "subject": "Your Guide is Ready: The Complete Egg Health Guide — Download Access Inside",
+      "type": "PRODUCT_DELIVERY",
+      "order_number": "ORD-20261001-000003",
+      "product_name": "The Complete Egg Health Guide",
+      "body_text": "Your digital publication is ready. Click the secure access links below to download your visual guide. Note: download links are valid for 7 days and include up to 5 downloads per item.",
+      "download_urls": [
+        {
+          "productName": "The Complete Egg Health Guide",
+          "url": "/api/download/tok_4c060744bcfbca61113d72237b1e21f1",
+          "token": "tok_4c060744bcfbca61113d72237b1e21f1"
+        }
+      ],
+      "sent_at": "2026-09-15T09:50:40.998Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789332402303_1",
+      "recipient_email": "bundlebuyer@example.com",
+      "recipient_name": "bundlebuyer",
+      "subject": "Order Confirmation: Food & Body Starter Bundle (ORD-20261001-000002)",
+      "type": "PURCHASE_CONFIRMATION",
+      "order_number": "ORD-20261001-000002",
+      "product_name": "Food & Body Starter Bundle",
+      "body_text": "Thank you for purchasing Food & Body Starter Bundle! Your order ORD-20261001-000002 for $24.99 USD has been confirmed. Your digital PDF guide(s) are ready for immediate download.",
+      "download_urls": [
+        {
+          "productName": "The Complete Egg Health Guide",
+          "url": "/api/download/tok_1f3f10343d6b4ab9ae0fbdee883b3c20",
+          "token": "tok_1f3f10343d6b4ab9ae0fbdee883b3c20"
+        },
+        {
+          "productName": "Sugar & Your Body",
+          "url": "/api/download/tok_6161fe549e36293ce6128af2d0111177",
+          "token": "tok_6161fe549e36293ce6128af2d0111177"
+        },
+        {
+          "productName": "The Complete Fiber Guide",
+          "url": "/api/download/tok_8ff4073a8277e46539e738db5d0ebe78",
+          "token": "tok_8ff4073a8277e46539e738db5d0ebe78"
+        }
+      ],
+      "sent_at": "2026-09-13T20:46:42.303Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789332402303_2",
+      "recipient_email": "bundlebuyer@example.com",
+      "recipient_name": "bundlebuyer",
+      "subject": "Your Guide is Ready: Food & Body Starter Bundle — Download Access Inside",
+      "type": "PRODUCT_DELIVERY",
+      "order_number": "ORD-20261001-000002",
+      "product_name": "Food & Body Starter Bundle",
+      "body_text": "Your digital publication is ready. Click the secure access links below to download your visual guide. Note: download links are valid for 7 days and include up to 5 downloads per item.",
+      "download_urls": [
+        {
+          "productName": "The Complete Egg Health Guide",
+          "url": "/api/download/tok_1f3f10343d6b4ab9ae0fbdee883b3c20",
+          "token": "tok_1f3f10343d6b4ab9ae0fbdee883b3c20"
+        },
+        {
+          "productName": "Sugar & Your Body",
+          "url": "/api/download/tok_6161fe549e36293ce6128af2d0111177",
+          "token": "tok_6161fe549e36293ce6128af2d0111177"
+        },
+        {
+          "productName": "The Complete Fiber Guide",
+          "url": "/api/download/tok_8ff4073a8277e46539e738db5d0ebe78",
+          "token": "tok_8ff4073a8277e46539e738db5d0ebe78"
+        }
+      ],
+      "sent_at": "2026-09-13T20:46:42.303Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789332209253_1",
+      "recipient_email": "test@example.com",
+      "recipient_name": "Dr. Test",
+      "subject": "Order Confirmation: The Complete Egg Health Guide (ORD-20261001-000001)",
+      "type": "PURCHASE_CONFIRMATION",
+      "order_number": "ORD-20261001-000001",
+      "product_name": "The Complete Egg Health Guide",
+      "body_text": "Thank you for purchasing The Complete Egg Health Guide! Your order ORD-20261001-000001 for $9.99 USD has been confirmed. Your digital PDF guide(s) are ready for immediate download.",
+      "download_urls": [
+        {
+          "productName": "The Complete Egg Health Guide",
+          "url": "/api/download/tok_e1e38deff706636ea17b25841f3d9467",
+          "token": "tok_e1e38deff706636ea17b25841f3d9467"
+        }
+      ],
+      "sent_at": "2026-09-13T20:43:29.253Z",
+      "status": "SENT"
+    },
+    {
+      "id": "em_1789332209253_2",
+      "recipient_email": "test@example.com",
+      "recipient_name": "Dr. Test",
+      "subject": "Your Guide is Ready: The Complete Egg Health Guide — Download Access Inside",
+      "type": "PRODUCT_DELIVERY",
+      "order_number": "ORD-20261001-000001",
+      "product_name": "The Complete Egg Health Guide",
+      "body_text": "Your digital publication is ready. Click the secure access links below to download your visual guide. Note: download links are valid for 7 days and include up to 5 downloads per item.",
+      "download_urls": [
+        {
+          "productName": "The Complete Egg Health Guide",
+          "url": "/api/download/tok_e1e38deff706636ea17b25841f3d9467",
+          "token": "tok_e1e38deff706636ea17b25841f3d9467"
+        }
+      ],
+      "sent_at": "2026-09-13T20:43:29.253Z",
+      "status": "SENT"
+    }
+  ],
+  "analytics": [
+    {
+      "id": "ev_1789589458684_8251",
+      "timestamp": "2026-09-16T20:10:58.684Z",
+      "event_name": "download_started",
+      "product_id": "FIB-001",
+      "product_name": "The Complete Fiber Guide",
+      "metadata": {
+        "orderNumber": "ORD-202609-000010",
+        "downloadCount": 1
+      }
+    },
+    {
+      "id": "ev_1789589454188_6fa5",
+      "timestamp": "2026-09-16T20:10:54.188Z",
+      "event_name": "payment_success",
+      "product_id": "FIB-001",
+      "metadata": {
+        "orderNumber": "ORD-202609-000010",
+        "amount": 9.99,
+        "status": "PENDING",
+        "transactionReference": "0x4f82a991b17e4526d83b1234567890abcdef1234567890abcdef1234567890ab"
+      }
+    },
+    {
+      "id": "ev_1789589448552_9ddc",
+      "timestamp": "2026-09-16T20:10:48.552Z",
+      "event_name": "payment_success",
+      "product_id": "SUG-001",
+      "metadata": {
+        "orderNumber": "ORD-202609-000009",
+        "amount": 9.99,
+        "status": "PENDING",
+        "transactionReference": "PP-TX-77889900"
+      }
+    },
+    {
+      "id": "ev_1789589446097_92b4",
+      "timestamp": "2026-09-16T20:10:46.097Z",
+      "event_name": "payment_success",
+      "product_id": "EGG-001",
+      "metadata": {
+        "orderNumber": "ORD-202609-000008",
+        "amount": 14985,
+        "status": "PENDING",
+        "transactionReference": "NGN-REF-998811"
+      }
+    },
+    {
+      "id": "ev_1789588898392_4a79",
+      "timestamp": "2026-09-16T20:01:38.393Z",
+      "event_name": "buy_click",
+      "product_id": "BND-001",
+      "product_name": "Food & Body Starter Bundle",
+      "url": "/",
+      "metadata": {
+        "price": 24.99
+      }
+    },
+    {
+      "id": "ev_1789588893263_86bd",
+      "timestamp": "2026-09-16T20:01:33.263Z",
+      "event_name": "page_view",
+      "product_name": "Homepage",
+      "url": "/"
+    },
+    {
+      "id": "ev_1789588739110_53d3",
+      "timestamp": "2026-09-16T19:58:59.110Z",
+      "event_name": "download_started",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "metadata": {
+        "orderNumber": "ORD-202609-000007",
+        "downloadCount": 1
+      }
+    },
+    {
+      "id": "ev_1789588730296_87c9",
+      "timestamp": "2026-09-16T19:58:50.296Z",
+      "event_name": "payment_success",
+      "product_id": "EGG-001",
+      "metadata": {
+        "orderNumber": "ORD-202609-000007",
+        "amount": 9.99,
+        "status": "PENDING",
+        "transactionReference": "TX-123456789"
+      }
+    },
+    {
+      "id": "ev_1789588613155_e1f7",
+      "timestamp": "2026-09-16T19:56:53.155Z",
+      "event_name": "page_view",
+      "product_name": "Homepage",
+      "url": "/"
+    },
+    {
+      "id": "ev_1789588288043_9ec7",
+      "timestamp": "2026-09-16T19:51:28.043Z",
+      "event_name": "payment_success",
+      "product_id": "EGG-001",
+      "metadata": {
+        "orderNumber": "ORD-20261001-000006",
+        "amount": 9.99,
+        "duplicate": false
+      }
+    },
+    {
+      "id": "ev_1789588287863_448d",
+      "timestamp": "2026-09-16T19:51:27.863Z",
+      "event_name": "checkout_started",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "metadata": {
+        "customerEmail": "victormoses911379@gmail.com",
+        "amount": 9.99
+      }
+    },
+    {
+      "id": "ev_1789588279003_65f8",
+      "timestamp": "2026-09-16T19:51:19.003Z",
+      "event_name": "buy_click",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "url": "/",
+      "metadata": {
+        "price": 9.99
+      }
+    },
+    {
+      "id": "ev_1789588276530_f1c2",
+      "timestamp": "2026-09-16T19:51:16.530Z",
+      "event_name": "page_view",
+      "product_name": "Shop Page",
+      "url": "/"
+    },
+    {
+      "id": "ev_1789587749526_7916",
+      "timestamp": "2026-09-16T19:42:29.527Z",
+      "event_name": "buy_click",
+      "product_id": "BND-001",
+      "product_name": "Food & Body Starter Bundle",
+      "url": "/",
+      "metadata": {
+        "price": 24.99
+      }
+    },
+    {
+      "id": "ev_1789587741769_06f3",
+      "timestamp": "2026-09-16T19:42:21.769Z",
+      "event_name": "page_view",
+      "product_name": "Homepage",
+      "url": "/"
+    },
+    {
+      "id": "ev_1789587709233_f7ac",
+      "timestamp": "2026-09-16T19:41:49.233Z",
+      "event_name": "checkout_started",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "metadata": {
+        "customerEmail": "victormoses911379@gmail.com",
+        "amount": 9.99
+      }
+    },
+    {
+      "id": "ev_1789587686283_41d7",
+      "timestamp": "2026-09-16T19:41:26.283Z",
+      "event_name": "checkout_started",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "metadata": {
+        "customerEmail": "victormoses911379@gmail.com",
+        "amount": 9.99
+      }
+    },
+    {
+      "id": "ev_1789587676122_3368",
+      "timestamp": "2026-09-16T19:41:16.122Z",
+      "event_name": "buy_click",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "url": "/",
+      "metadata": {
+        "price": 9.99
+      }
+    },
+    {
+      "id": "ev_1789587670526_ee7d",
+      "timestamp": "2026-09-16T19:41:10.526Z",
+      "event_name": "page_view",
+      "product_name": "Shop Page",
+      "url": "/"
+    },
+    {
+      "id": "ev_1789466688448_abd9",
+      "timestamp": "2026-09-15T10:04:48.448Z",
+      "event_name": "payment_success",
+      "product_id": "BND-001",
+      "metadata": {
+        "orderNumber": "ORD-20261001-000005",
+        "amount": 24.99,
+        "provider": "Flutterwave",
+        "duplicate": false
+      }
+    },
+    {
+      "id": "ev_1789466599146_c9f8",
+      "timestamp": "2026-09-15T10:03:19.146Z",
+      "event_name": "buy_click",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "url": "/",
+      "metadata": {
+        "price": 9.99
+      }
+    },
+    {
+      "id": "ev_1789466553193_24f0",
+      "timestamp": "2026-09-15T10:02:33.194Z",
+      "event_name": "page_view",
+      "product_name": "Shop Page",
+      "url": "/"
+    },
+    {
+      "id": "ev_1789466543457_069a",
+      "timestamp": "2026-09-15T10:02:23.458Z",
+      "event_name": "payment_success",
+      "product_id": "BND-001",
+      "metadata": {
+        "orderNumber": "ORD-20261001-000004",
+        "amount": 24.99,
+        "duplicate": false
+      }
+    },
+    {
+      "id": "ev_1789466543240_e1bf",
+      "timestamp": "2026-09-15T10:02:23.240Z",
+      "event_name": "checkout_started",
+      "product_id": "BND-001",
+      "product_name": "Food & Body Starter Bundle",
+      "metadata": {
+        "customerEmail": "victormoses911379@gmail.com",
+        "amount": 24.99
+      }
+    },
+    {
+      "id": "ev_1789466534813_437a",
+      "timestamp": "2026-09-15T10:02:14.813Z",
+      "event_name": "buy_click",
+      "product_id": "BND-001",
+      "product_name": "Food & Body Starter Bundle",
+      "url": "/",
+      "metadata": {
+        "price": 24.99
+      }
+    },
+    {
+      "id": "ev_1789466534138_a1a7",
+      "timestamp": "2026-09-15T10:02:14.138Z",
+      "event_name": "page_view",
+      "product_name": "Homepage",
+      "url": "/"
+    },
+    {
+      "id": "ev_1789465890764_1086",
+      "timestamp": "2026-09-15T09:51:30.764Z",
+      "event_name": "page_view",
+      "product_name": "Homepage",
+      "url": "/"
+    },
+    {
+      "id": "ev_1789465844572_3d71",
+      "timestamp": "2026-09-15T09:50:44.572Z",
+      "event_name": "payment_success",
+      "product_id": "EGG-001",
+      "metadata": {
+        "orderNumber": "ORD-20261001-000003",
+        "amount": 9.99,
+        "provider": "Flutterwave",
+        "duplicate": true
+      }
+    },
+    {
+      "id": "ev_1789465840999_38fb",
+      "timestamp": "2026-09-15T09:50:40.999Z",
+      "event_name": "payment_success",
+      "product_id": "EGG-001",
+      "metadata": {
+        "orderNumber": "ORD-20261001-000003",
+        "amount": 9.99,
+        "provider": "Flutterwave",
+        "duplicate": false
+      }
+    },
+    {
+      "id": "ev_1789464470063_5115",
+      "timestamp": "2026-09-15T09:27:50.063Z",
+      "event_name": "product_view",
+      "product_id": "complete-egg-health-guide",
+      "url": "/"
+    },
+    {
+      "id": "ev_1789464463601_811b",
+      "timestamp": "2026-09-15T09:27:43.601Z",
+      "event_name": "page_view",
+      "product_name": "Shop Page",
+      "url": "/"
+    },
+    {
+      "id": "ev_1789332403911_22d4",
+      "timestamp": "2026-09-13T20:46:43.911Z",
+      "event_name": "download_started",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "metadata": {
+        "orderNumber": "ORD-20261001-000002",
+        "downloadCount": 1
+      }
+    },
+    {
+      "id": "ev_1789332402303_3a71",
+      "timestamp": "2026-09-13T20:46:42.303Z",
+      "event_name": "payment_success",
+      "product_id": "BND-001",
+      "metadata": {
+        "orderNumber": "ORD-20261001-000002",
+        "amount": 24.99,
+        "duplicate": false
+      }
+    },
+    {
+      "id": "ev_1789332400591_7c27",
+      "timestamp": "2026-09-13T20:46:40.591Z",
+      "event_name": "checkout_started",
+      "product_id": "BND-001",
+      "product_name": "Food & Body Starter Bundle",
+      "metadata": {
+        "customerEmail": "bundlebuyer@example.com",
+        "amount": 24.99
+      }
+    },
+    {
+      "id": "ev_1789332213589_7de3",
+      "timestamp": "2026-09-13T20:43:33.589Z",
+      "event_name": "download_started",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "metadata": {
+        "orderNumber": "ORD-20261001-000001",
+        "downloadCount": 1
+      }
+    },
+    {
+      "id": "ev_1789332211672_b26d",
+      "timestamp": "2026-09-13T20:43:31.672Z",
+      "event_name": "payment_success",
+      "product_id": "EGG-001",
+      "metadata": {
+        "orderNumber": "ORD-20261001-000001",
+        "amount": 9.99,
+        "duplicate": true
+      }
+    },
+    {
+      "id": "ev_1789332209253_ff23",
+      "timestamp": "2026-09-13T20:43:29.253Z",
+      "event_name": "payment_success",
+      "product_id": "EGG-001",
+      "metadata": {
+        "orderNumber": "ORD-20261001-000001",
+        "amount": 9.99,
+        "duplicate": false
+      }
+    },
+    {
+      "id": "ev_1789332207491_2517",
+      "timestamp": "2026-09-13T20:43:27.492Z",
+      "event_name": "checkout_started",
+      "product_id": "EGG-001",
+      "product_name": "The Complete Egg Health Guide",
+      "metadata": {
+        "customerEmail": "test@example.com",
+        "amount": 9.99
+      }
+    }
+  ],
+  "processed_payment_references": [
+    "pay_ref_1789332207491_2b989db59c32",
+    "pay_ref_1789332400591_42a237c2f11f",
+    "flw_tx_test_99812",
+    "pay_ref_1789466543240_9d829fd6d433",
+    "flw_test_instant_verification",
+    "pay_ref_1789588287863_af1117419528"
+  ],
+  "payment_settings": {
+    "naira": {
+      "enabled": true,
+      "method_name": "Nigerian Naira (₦)",
+      "account_name": "Victor Moses",
+      "bank_name": "Guaranty Trust Bank (GTBank)",
+      "account_number": "0123456789",
+      "currency": "NGN",
+      "instructions": "1. Transfer the exact amount in NGN to the bank account above.\n2. Copy the session/transaction reference or narration ID from your banking app receipt.\n3. Return to this form, optionally attach your payment screenshot, and submit.\n4. Once verified by our team, your PDF download will unlock immediately.",
+      "naira_rate": 1500
+    },
+    "paypal": {
+      "enabled": true,
+      "method_name": "PayPal",
+      "account_name": "Victor Moses",
+      "email": "payments@foodandbodypub.com",
+      "currency": "USD",
+      "instructions": "1. Send payment via PayPal to the email address above using Goods & Services or Personal Transfer.\n2. Note your PayPal Transaction ID from your payment confirmation receipt.\n3. Return to this form, fill out your transaction ID, and optionally attach a screenshot of your PayPal receipt.\n4. Our team will verify and unlock your digital guide."
+    },
+    "crypto": {
+      "enabled": true,
+      "method_name": "Crypto",
+      "instructions": "1. Select your preferred cryptocurrency from the options below.\n2. Send the equivalent amount to the designated wallet address.\n3. Ensure you choose the correct blockchain network to prevent any loss of funds.\n4. Copy your Transaction Hash / TxID from your wallet or exchange.\n5. Submit your TxID and optional screenshot below for blockchain verification.",
+      "options": [
+        {
+          "id": "crypto_btc",
+          "name": "Bitcoin",
+          "network": "Bitcoin",
+          "wallet_address": "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
+          "currency_symbol": "BTC",
+          "note": "Send only BTC on the native Bitcoin network."
+        },
+        {
+          "id": "crypto_usdt_trc20",
+          "name": "USDT",
+          "network": "TRC20",
+          "wallet_address": "TYDZSBLNrdgnLsUtHgVxrmRgyq27gWnEqT",
+          "currency_symbol": "USDT",
+          "note": "Send only USDT via Tron (TRC20) network."
+        },
+        {
+          "id": "crypto_usdt_bep20",
+          "name": "USDT",
+          "network": "BEP20",
+          "wallet_address": "0x71C838931024B3619796eB96160F5488132e08e6",
+          "currency_symbol": "USDT",
+          "note": "Send only USDT via BNB Smart Chain (BEP20)."
+        },
+        {
+          "id": "crypto_eth",
+          "name": "Ethereum",
+          "network": "Ethereum",
+          "wallet_address": "0x71C838931024B3619796eB96160F5488132e08e6",
+          "currency_symbol": "ETH",
+          "note": "Send only ETH via Ethereum (ERC20) network."
+        }
+      ]
+    },
+    "payment_method_name": "Direct Bank Transfer / Wire",
+    "account_name": "Victor Moses",
+    "account_number_or_email": "0123456789 (Food & Body Publishing / Main Account)",
+    "currency": "USD",
+    "instructions": "1. Make the payment using the details above.\n2. Copy your transaction/reference ID from your banking app or receipt.\n3. Return to this page and fill out the payment submission form below.\n4. (Optional) Upload a screenshot/proof of your payment.\n5. Submit your payment information below and wait for confirmation.",
+    "updated_at": "2026-09-16T12:00:00.000Z"
+  }
+}

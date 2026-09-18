@@ -1,0 +1,6 @@
+{
+  "name": "Food & Body Publishing",
+  "description": "Visual, evidence-based digital nutrition and food guides publishing platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
